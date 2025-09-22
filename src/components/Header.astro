@@ -316,8 +316,29 @@
   }
   
   @media (max-width: 768px) {
+    .container {
+      justify-content: space-between;
+      gap: 15px;
+    }
+    
+    .nav-brand {
+      order: 2;
+      flex: 0 0 auto;
+    }
+    
     .hamburger {
       display: block;
+      order: 1;
+      flex: 0 0 auto;
+    }
+    
+    .nav-cta {
+      order: 3;
+      flex: 0 0 auto;
+    }
+    
+    .social-media {
+      display: flex;
     }
     
     .mobile-menu {
@@ -325,10 +346,6 @@
     }
     
     .nav {
-      display: none;
-    }
-    
-    .social-media {
       display: none;
     }
     

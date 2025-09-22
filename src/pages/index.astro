@@ -1,0 +1,53 @@
+---
+// Astro page component
+import Header from '../components/Header.astro';
+import ReunionEvents from '../components/ReunionEvents.astro';
+import Memories from '../components/Memories.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Blog from '../components/Blog.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <title>Lincoln East High School Class of 1996 | 30th Reunion</title>
+    <meta name="description" content="Join us for the Lincoln East High School Class of 1996 30th Reunion! May 29-30, 2026 in Lincoln, Nebraska. Reconnect with classmates, share memories, and celebrate 30 years since graduation." />
+    <meta property="og:title" content="Lincoln East High School Class of 1996 | 30th Reunion" />
+    <meta property="og:description" content="Join us for the Lincoln East High School Class of 1996 30th Reunion! May 29-30, 2026 in Lincoln, Nebraska. Reconnect with classmates, share memories, and celebrate 30 years since graduation." />
+    <meta property="og:image" content="https://static.wixstatic.com/media/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg/v1/fill/w_2500,h_1666,al_c/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lincoln East High School Class of 1996 | 30th Reunion" />
+    <meta name="twitter:description" content="Join us for the Lincoln East High School Class of 1996 30th Reunion! May 29-30, 2026 in Lincoln, Nebraska. Reconnect with classmates, share memories, and celebrate 30 years since graduation." />
+    <meta name="twitter:image" content="https://static.wixstatic.com/media/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg/v1/fill/w_2500,h_1666,al_c/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <ReunionEvents />
+      <Memories />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>

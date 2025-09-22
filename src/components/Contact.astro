@@ -1,0 +1,208 @@
+---
+// Contact section component
+---
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <div class="contact-details">
+          <div class="contact-item">
+            <h3>Reunion Location</h3>
+            <p>LINCOLN EAST HIGH SCHOOL<br>1000 S 70th St, Lincoln, NE 68510<br>THE CORNHUSKER MARRIOTT</p>
+          </div>
+          
+          <div class="contact-item">
+            <h3>Contact Info</h3>
+            <p><a href="mailto:reunion@lincolneast1996.com">REUNION@LINCOLNEAST1996.COM</a><br>
+            <a href="tel:+14025551234">(402) 555-1234</a></p>
+          </div>
+          
+          <div class="contact-item">
+            <h3>Reunion Dates</h3>
+            <p>MAY 29-30, 2026<br>FRIDAY & SATURDAY EVENTS</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="company">Spouse/Guest Name</label>
+            <input type="text" id="company" name="company">
+          </div>
+          
+          <div class="form-group">
+            <label for="service">Events Attending</label>
+            <select id="service" name="service">
+              <option value="">Select events</option>
+              <option value="friday-mixer">Friday Night Mixer</option>
+              <option value="school-tour">School Tour</option>
+              <option value="class-photo">Class Photo</option>
+              <option value="main-dinner">Main Reunion Dinner</option>
+              <option value="family-picnic">Family Picnic</option>
+              <option value="music-night">90s Music Night</option>
+              <option value="all-events">All Events</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-large">RSVP Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 80px 0;
+    background: #f8f9fa;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  
+  .contact-info h2 {
+    font-size: 42px;
+    color: #1e40af;
+    margin-bottom: 40px;
+    font-weight: 700;
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .contact-item h3 {
+    font-size: 20px;
+    color: #1e40af;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .contact-item p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+  .contact-item a {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .contact-item a:hover {
+    color: #1e3a8b;
+  }
+  
+  .contact-form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #1e40af;
+  }
+  
+  .btn {
+    padding: 16px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-large {
+    padding: 20px 40px;
+    font-size: 18px;
+    width: 100%;
+  }
+  
+  .btn-primary {
+    background: #1e40af;
+    color: white;
+    border: 2px solid #1e40af;
+  }
+  
+  .btn-primary:hover {
+    background: #1e3a8b;
+    border-color: #1e3a8b;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .contact-info h2 {
+      font-size: 32px;
+    }
+    
+    .contact-form {
+      padding: 30px 20px;
+    }
+  }
+</style>

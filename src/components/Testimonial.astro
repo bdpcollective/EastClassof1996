@@ -1,0 +1,101 @@
+---
+// Memories section component
+---
+
+<section class="testimonial" id="memories">
+  <div class="container">
+    <div class="testimonial-content">
+      <div class="testimonial-image">
+        <img src="https://static.wixstatic.com/media/4c7a9c_6dc2372241a54033b682aaa5057503ea~mv2.png" alt="Class of 1996 memories" />
+      </div>
+      <div class="testimonial-text">
+        <blockquote>
+          "High school was such a special time in our lives. I remember the pep rallies, the football games, the prom, and all the friendships we made. Thirty years later, I still think about those days and wonder what everyone is up to. This reunion is going to be amazing - I can't wait to see everyone and catch up on all the stories we've missed. It's incredible to think about how much we've all grown and changed, but I know when we get together, it'll feel like no time has passed at all."
+        </blockquote>
+        <div class="testimonial-author">
+          <span class="author-name">Sarah Johnson, Class of '96</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial {
+    padding: 80px 0;
+    background: #f8f9fa;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .testimonial-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .testimonial-image {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .testimonial-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .testimonial-text blockquote {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #333;
+    font-style: italic;
+    margin: 0 0 30px 0;
+    position: relative;
+  }
+  
+  .testimonial-text blockquote::before {
+    content: '"';
+    font-size: 60px;
+    color: #1e40af;
+    position: absolute;
+    top: -20px;
+    left: -30px;
+    font-family: serif;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-name {
+    font-weight: 600;
+    color: #1e40af;
+    font-size: 18px;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .testimonial-text blockquote {
+      font-size: 18px;
+    }
+    
+    .testimonial-text blockquote::before {
+      font-size: 40px;
+      top: -10px;
+      left: -15px;
+    }
+  }
+</style>

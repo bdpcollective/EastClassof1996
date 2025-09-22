@@ -44,11 +44,6 @@
       <li><a href="/EastClassof1996/">Home</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="/EastClassof1996/memories">Memories</a></li>
-      <li class="mobile-social">
-        <a href="https://www.facebook.com/LincolnEastHighSchoolClassof1996" target="_blank" rel="noopener noreferrer">
-          Facebook Page
-        </a>
-      </li>
     </ul>
   </div>
 </header>
@@ -304,8 +299,17 @@
   
   @media (max-width: 768px) {
     .container {
+      display: flex;
       justify-content: space-between;
-      gap: 15px;
+      align-items: center;
+      gap: 10px;
+      padding: 0 15px;
+    }
+    
+    .hamburger {
+      display: block;
+      order: 1;
+      flex: 0 0 auto;
     }
     
     .nav-brand {
@@ -313,10 +317,8 @@
       flex: 0 0 auto;
     }
     
-    .hamburger {
+    .nav-rsvp-button {
       display: block;
-      order: 1;
-      flex: 0 0 auto;
     }
     
     .nav-cta {
@@ -326,6 +328,12 @@
     
     .social-media {
       display: flex;
+      gap: 8px;
+    }
+    
+    .social-link svg {
+      width: 18px;
+      height: 18px;
     }
     
     .mobile-menu {

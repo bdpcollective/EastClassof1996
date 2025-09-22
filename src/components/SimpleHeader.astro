@@ -7,7 +7,15 @@
     <div class="nav-brand">
       <a href="#rsvp" class="nav-rsvp-button">RSVP</a>
     </div>
-    <nav class="nav">
+    
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav class="nav" id="nav">
       <ul class="nav-list">
         <li><a href="/">Home</a></li>
         <li><a href="#events">Events</a></li>
@@ -30,7 +38,55 @@
       </div>
     </div>
   </div>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="/">Home</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="/memories">Memories</a></li>
+      <li><a href="#classmates">Classmates</a></li>
+      <li class="mobile-social">
+        <a href="https://www.facebook.com/LincolnEastHighSchoolClassof1996" target="_blank" rel="noopener noreferrer">
+          Facebook Page
+        </a>
+      </li>
+    </ul>
+  </div>
 </header>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const body = document.body;
+  
+  hamburger?.addEventListener('click', () => {
+    const isOpen = hamburger.classList.contains('active');
+    
+    if (isOpen) {
+      hamburger.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+      body.classList.remove('menu-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    } else {
+      hamburger.classList.add('active');
+      mobileMenu?.classList.add('active');
+      body.classList.add('menu-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+  });
+  
+  // Close menu when clicking on a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+      body.classList.remove('menu-open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 
 <div class="banner">
   <div class="container">
@@ -148,6 +204,100 @@
     transform: translateY(-2px);
   }
   
+  /* Hamburger Menu Styles */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #1e40af;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* Mobile Menu Overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 99;
+  }
+  
+  .mobile-menu.active {
+    transform: translateY(0);
+  }
+  
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mobile-nav-list li {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .mobile-nav-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .mobile-nav-list a {
+    display: block;
+    padding: 20px 30px;
+    color: #333;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .mobile-nav-list a:hover {
+    background: #f9fafb;
+    color: #1e40af;
+  }
+  
+  .mobile-social {
+    background: #f9fafb;
+  }
+  
+  .mobile-social a {
+    color: #1e40af;
+    font-weight: 600;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  :global(body.menu-open) {
+    overflow: hidden;
+  }
+  
   @media (max-width: 1024px) {
     .class-year {
       font-size: 64px;
@@ -155,6 +305,14 @@
   }
   
   @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+    
+    .mobile-menu {
+      display: block;
+    }
+    
     .nav {
       display: none;
     }

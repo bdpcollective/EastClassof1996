@@ -249,4 +249,26 @@
     font-weight: 400;
     line-height: 1;
   }
+  
+  /* Large monitors (4K, ultrawide) */
+  @media (min-width: 1920px) {
+    .container {
+      max-width: 1600px;
+    }
+    
+    .class-year {
+      font-size: 96px;
+    }
+  }
+  
+  /* Ultra-wide monitors */
+  @media (min-width: 2560px) {
+    .container {
+      max-width: 2000px;
+    }
+    
+    .class-year {
+      font-size: 108px;
+    }
+  }
 </style>

@@ -188,20 +188,93 @@
     background: #f9fafb;
   }
   
+  /* Large monitors */
+  @media (min-width: 1920px) {
+    .container {
+      max-width: 1600px;
+    }
+    
+    .section-title {
+      font-size: 56px;
+    }
+    
+    .event-card {
+      padding: 40px;
+    }
+    
+    .event-details h3 {
+      font-size: 28px;
+    }
+    
+    .event-details .description {
+      font-size: 18px;
+    }
+  }
+  
+  /* Mobile styles */
   @media (max-width: 768px) {
+    .reunion-events {
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      font-size: 36px;
+      margin: 0 0 40px 0;
+    }
+    
     .events-grid {
-      grid-template-columns: 1fr;
+      gap: 30px;
     }
     
     .event-card {
       flex-direction: column;
-      text-align: center;
+      padding: 20px;
     }
     
     .event-date {
       width: 100%;
       max-width: 120px;
-      margin: 0 auto;
+      margin: 0 auto 20px auto;
+    }
+    
+    .event-details {
+      text-align: center;
+    }
+    
+    .rsvp-button {
+      font-size: 16px;
+      padding: 14px 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .reunion-events {
+      padding: 40px 0;
+    }
+    
+    .section-title {
+      font-size: 28px;
+      margin: 0 0 30px 0;
+    }
+    
+    .event-card {
+      padding: 15px;
+    }
+    
+    .event-date {
+      padding: 15px;
+    }
+    
+    .event-date .day {
+      font-size: 28px;
+    }
+    
+    .event-details h3 {
+      font-size: 20px;
+    }
+    
+    .event-details .description {
+      font-size: 14px;
     }
   }
 </style>

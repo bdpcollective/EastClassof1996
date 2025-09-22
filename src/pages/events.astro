@@ -1,0 +1,346 @@
+---
+// Events page
+import SimpleHeader from '../components/SimpleHeader.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <title>Events | Lincoln East High School Class of 1996</title>
+    <meta name="description" content="View all reunion events for the Lincoln East High School Class of 1996 30th Reunion. Football game, school tour, and social events." />
+  </head>
+  <body>
+    <SimpleHeader />
+    <main>
+      <section class="events-page">
+        <div class="container">
+          <h1 class="page-title">REUNION EVENTS</h1>
+          <p class="page-subtitle">Join us for an unforgettable weekend celebrating 30 years since graduation</p>
+          
+          <div class="events-grid">
+            <div class="event-card">
+              <div class="event-date">
+                <span class="day">4</span>
+                <span class="month">SEP</span>
+              </div>
+              <div class="event-details">
+                <h3>Lincoln East Football Game</h3>
+                <p class="time">7:00 PM</p>
+                <p class="location">Seacrest Field</p>
+                <p class="address">Address TBD</p>
+                <p class="description">Cheer on the Spartans at the Friday night football game!</p>
+              </div>
+            </div>
+            
+            <div class="event-card">
+              <div class="event-date">
+                <span class="day">5</span>
+                <span class="month">SEP</span>
+              </div>
+              <div class="event-details">
+                <h3>School Tour</h3>
+                <p class="time">8:00 AM - 10:00 AM</p>
+                <p class="location">Lincoln East High School</p>
+                <p class="address">1000 S 70th St, Lincoln, NE 68510</p>
+                <p class="description">Take a nostalgic walk through the halls of Lincoln East and see how things have changed. Coffee and donuts will be provided.</p>
+              </div>
+            </div>
+            
+            <div class="event-card">
+              <div class="event-date">
+                <span class="day">5</span>
+                <span class="month">SEP</span>
+              </div>
+              <div class="event-details">
+                <h3>Social Event</h3>
+                <p class="time">7:00 PM - 10:00 PM</p>
+                <p class="location">Location TBD</p>
+                <p class="address">Address TBD</p>
+                <p class="description">Join us for a casual social gathering to reconnect with classmates.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rsvp-button-container">
+            <a href="#rsvp" class="rsvp-button">RSVP NOW</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-width: 320px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .events-page {
+    padding: 80px 0;
+    background: #f9fafb;
+    min-height: 80vh;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .page-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px;
+    font-weight: 100;
+    color: #1e40af;
+    text-align: center;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .page-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #666;
+    text-align: center;
+    margin: 0 0 60px 0;
+  }
+  
+  .events-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .event-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+  }
+  
+  .event-date {
+    background: #1e40af;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    min-width: 80px;
+    height: fit-content;
+  }
+  
+  .event-date .day {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  .event-date .month {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+    letter-spacing: 1px;
+  }
+  
+  .event-details h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #1e40af;
+    margin: 0 0 10px 0;
+  }
+  
+  .event-details .time {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 5px 0;
+    font-weight: 500;
+  }
+  
+  .event-details .location {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #999;
+    margin: 0 0 5px 0;
+    font-style: italic;
+  }
+  
+  .event-details .address {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: #999;
+    margin: 0 0 15px 0;
+  }
+  
+  .event-details .description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .rsvp-button-container {
+    text-align: center;
+  }
+  
+  .rsvp-button {
+    display: inline-block;
+    background: #1e40af;
+    color: white;
+    padding: 16px 48px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .rsvp-button:hover {
+    background: #1e3a8b;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Large monitors */
+  @media (min-width: 1920px) {
+    .container {
+      max-width: 1600px;
+    }
+    
+    .page-title {
+      font-size: 56px;
+    }
+    
+    .event-card {
+      padding: 40px;
+    }
+    
+    .event-details h3 {
+      font-size: 28px;
+    }
+    
+    .event-details .description {
+      font-size: 18px;
+    }
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .events-page {
+      padding: 60px 0;
+    }
+    
+    .page-title {
+      font-size: 36px;
+      margin: 0 0 20px 0;
+    }
+    
+    .page-subtitle {
+      font-size: 18px;
+      margin: 0 0 40px 0;
+    }
+    
+    .events-grid {
+      gap: 30px;
+    }
+    
+    .event-card {
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    .event-date {
+      width: 100%;
+      max-width: 120px;
+      margin: 0 auto 20px auto;
+    }
+    
+    .event-details {
+      text-align: center;
+    }
+    
+    .rsvp-button {
+      font-size: 16px;
+      padding: 14px 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .events-page {
+      padding: 40px 0;
+    }
+    
+    .page-title {
+      font-size: 28px;
+      margin: 0 0 15px 0;
+    }
+    
+    .page-subtitle {
+      font-size: 16px;
+      margin: 0 0 30px 0;
+    }
+    
+    .event-card {
+      padding: 15px;
+    }
+    
+    .event-date {
+      padding: 15px;
+    }
+    
+    .event-date .day {
+      font-size: 28px;
+    }
+    
+    .event-details h3 {
+      font-size: 20px;
+    }
+    
+    .event-details .description {
+      font-size: 14px;
+    }
+    
+    .rsvp-button {
+      font-size: 14px;
+      padding: 12px 30px;
+    }
+  }
+</style>

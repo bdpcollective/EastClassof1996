@@ -17,6 +17,9 @@ import Footer from '../components/Footer.astro';
     <meta name="description" content="View photos and memories from the Lincoln East High School Class of 1996. Share your own memories and reconnect with classmates." />
   </head>
   <body>
+    <!-- Particle System Background -->
+    <div id="particles-container" class="particles-container"></div>
+    
     <Header />
     
     <div class="banner">
@@ -26,7 +29,7 @@ import Footer from '../components/Footer.astro';
           <p>SCHOOL REUNION</p>
         </div>
         <div class="banner-section banner-center">
-          <p class="class-year">CLASS OF 1996</p>
+          <p class="class-year glow-text">CLASS OF 1996</p>
         </div>
         <div class="banner-section banner-right">
           <p>LINCOLN</p>
@@ -41,147 +44,201 @@ import Footer from '../components/Footer.astro';
       <section class="memories-page">
         <div class="container">
           <div class="memories-gallery">
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465127603_9055608791116063_4710872640504337783_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465127603_9055608791116063_4710872640504337783_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465127603_9055608791116063_4710872640504337783_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465438560_9055608814449394_1075421722554769452_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465438560_9055608814449394_1075421722554769452_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465438560_9055608814449394_1075421722554769452_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465543029_9055609131116029_3663602968941105562_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465543029_9055609131116029_3663602968941105562_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465543029_9055609131116029_3663602968941105562_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465264510_9055608807782728_6239206708037678016_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465264510_9055608807782728_6239206708037678016_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465264510_9055608807782728_6239206708037678016_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465070141_9055608801116062_7605442766377908196_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465070141_9055608801116062_7605442766377908196_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465070141_9055608801116062_7605442766377908196_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465055155_9055609144449361_4123593596248471399_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465055155_9055609144449361_4123593596248471399_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465055155_9055609144449361_4123593596248471399_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465111878_9055608797782729_7673751147646940858_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465111878_9055608797782729_7673751147646940858_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465111878_9055608797782729_7673751147646940858_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465448933_9055608811116061_3195572261878764037_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465448933_9055608811116061_3195572261878764037_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465448933_9055608811116061_3195572261878764037_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465186592_9055609151116027_6360204118983415303_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465186592_9055609151116027_6360204118983415303_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465186592_9055609151116027_6360204118983415303_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/464949062_9055609161116026_1478321318197612182_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/464949062_9055609161116026_1478321318197612182_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/464949062_9055609161116026_1478321318197612182_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465366656_9055609141116028_6934270115417462327_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465366656_9055609141116028_6934270115417462327_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465366656_9055609141116028_6934270115417462327_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465411351_9055609154449360_284769326469106125_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465411351_9055609154449360_284769326469106125_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465411351_9055609154449360_284769326469106125_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465549368_9055609157782693_5839450919543582768_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465549368_9055609157782693_5839450919543582768_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465549368_9055609157782693_5839450919543582768_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465240110_9055608787782730_41978682562471897_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465240110_9055608787782730_41978682562471897_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465240110_9055608787782730_41978682562471897_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/465241126_9055608804449395_4727202403310464972_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/465241126_9055608804449395_4727202403310464972_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465241126_9055608804449395_4727202403310464972_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">2016 Reunion</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/474779326_952042330359989_8718990319472695709_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/474779326_952042330359989_8718990319472695709_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/474779326_952042330359989_8718990319472695709_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">Class memories</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/300972839_411226991108195_3828444108434351779_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/300972839_411226991108195_3828444108434351779_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/300972839_411226991108195_3828444108434351779_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">Class memories</p>
                 <p class="memory-description">Class memories</p>
               </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
+              </div>
             </div>
             
-            <div class="memory-card">
-              <img src="/EastClassof1996/images/93796277_3172592099417791_6998345339895808000_n.jpg" alt="Class Memory" />
+            <div class="memory-card" data-lightbox="gallery">
+              <img src="/EastClassof1996/images/93796277_3172592099417791_6998345339895808000_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/93796277_3172592099417791_6998345339895808000_n.jpg" />
               <div class="memory-info">
                 <p class="memory-date">Class memories</p>
                 <p class="memory-description">Class memories</p>
+              </div>
+              <div class="overlay">
+                <div class="zoom-icon">🔍</div>
               </div>
             </div>
           </div>
@@ -189,7 +246,252 @@ import Footer from '../components/Footer.astro';
       </section>
     </main>
     
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-container">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">&#8249;</button>
+        <button class="lightbox-next">&#8250;</button>
+        <div class="lightbox-content">
+          <img id="lightbox-image" src="" alt="" />
+          <div class="lightbox-info">
+            <p id="lightbox-caption"></p>
+            <div class="lightbox-counter">
+              <span id="lightbox-current">1</span> / <span id="lightbox-total">18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <Footer />
+    
+    <script>
+      
+      // Smooth page transitions
+      function initPageTransitions() {
+        const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+        
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Skip external links and same page
+            if (!href || href.startsWith('http') || href === window.location.pathname) {
+              return;
+            }
+            
+            e.preventDefault();
+            
+            // Add fade out effect
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            
+            // Navigate after fade out
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          });
+        });
+      }
+      
+      // Page fade in effect
+      function fadeInPage() {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease-in';
+        setTimeout(() => {
+          document.body.style.opacity = '1';
+        }, 50);
+      }
+      
+      // Lightbox functionality
+      function initLightbox() {
+        const memoryCards = document.querySelectorAll('.memory-card');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
+        const currentCounter = document.getElementById('lightbox-current');
+        const totalCounter = document.getElementById('lightbox-total');
+        
+        let currentImageIndex = 0;
+        
+        // Get all images from memory cards
+        const images = Array.from(memoryCards).map(card => card.querySelector('img'));
+        
+        // Update total counter
+        if (totalCounter) totalCounter.textContent = images.length;
+        
+        function openLightbox(index) {
+          currentImageIndex = index;
+          const img = images[currentImageIndex];
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt;
+          if (currentCounter) currentCounter.textContent = currentImageIndex + 1;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+        
+        function showPrevImage() {
+          currentImageIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+          openLightbox(currentImageIndex);
+        }
+        
+        function showNextImage() {
+          currentImageIndex = currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
+          openLightbox(currentImageIndex);
+        }
+        
+        // Event listeners - attach to the entire memory card
+        memoryCards.forEach((card, index) => {
+          card.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLightbox(index);
+          });
+        });
+        
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+        if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('active')) return;
+          
+          switch(e.key) {
+            case 'Escape':
+              closeLightbox();
+              break;
+            case 'ArrowLeft':
+              showPrevImage();
+              break;
+            case 'ArrowRight':
+              showNextImage();
+              break;
+          }
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+        
+        lightbox.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        });
+        
+        lightbox.addEventListener('touchend', (e) => {
+          endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          
+          if (Math.abs(diff) > 50) { // Minimum swipe distance
+            if (diff > 0) {
+              showNextImage(); // Swipe left = next
+            } else {
+              showPrevImage(); // Swipe right = previous
+            }
+          }
+        });
+      }
+      
+      // Particle System
+      function createParticleSystem() {
+        const container = document.getElementById('particles-container');
+        if (!container) return;
+        
+        const colors = [
+          '#1e40af',  // Primary blue
+          '#3b82f6',  // Lighter blue  
+          '#60a5fa',  // Even lighter blue
+          '#93c5fd',  // Light blue
+          '#dbeafe',  // Very light blue
+          '#ffffff',  // White
+          'rgba(255, 255, 255, 0.8)', // Semi-transparent white
+          'rgba(30, 64, 175, 0.6)',   // Semi-transparent blue
+        ];
+        
+        const shapes = ['circle', 'square', 'triangle'];
+        const animations = ['float-up', 'float-diagonal', 'float-zigzag'];
+        
+        function createParticle() {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          // Random shape
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          particle.classList.add(shape);
+          
+          // Random size
+          const size = Math.random() * 8 + 2; // 2-10px
+          if (shape !== 'triangle') {
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+          }
+          
+          // Random color
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          if (shape === 'triangle') {
+            particle.style.borderBottomColor = color;
+          } else {
+            particle.style.backgroundColor = color;
+          }
+          
+          // Random position
+          particle.style.left = Math.random() * 100 + '%';
+          
+          // Random animation
+          const animation = animations[Math.floor(Math.random() * animations.length)];
+          particle.style.animation = `${animation} ${Math.random() * 10 + 5}s linear infinite`;
+          
+          // Random delay
+          particle.style.animationDelay = Math.random() * 5 + 's';
+          
+          container.appendChild(particle);
+          
+          // Remove particle after animation completes
+          setTimeout(() => {
+            if (container && container.contains(particle)) {
+              container.removeChild(particle);
+            }
+          }, 15000);
+        }
+        
+        // Create initial particles
+        for (let i = 0; i < 15; i++) {
+          setTimeout(() => createParticle(), Math.random() * 5000);
+        }
+        
+        // Continue creating particles
+        setInterval(() => {
+          if (Math.random() > 0.7) { // 30% chance each interval
+            createParticle();
+          }
+        }, 1000);
+      }
+      
+      // Initialize effects when page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        // Fade in page
+        fadeInPage();
+        
+        // Initialize transitions
+        initPageTransitions();
+        
+        // Initialize lightbox
+        initLightbox();
+        
+        // Start particle system
+        createParticleSystem();
+      });
+    </script>
   </body>
 </html>
 
@@ -208,6 +510,100 @@ import Footer from '../components/Footer.astro';
   
   * {
     box-sizing: border-box;
+  }
+  
+  /* Particle System */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+  
+  .particle.circle {
+    border-radius: 50%;
+  }
+  
+  .particle.square {
+    border-radius: 2px;
+  }
+  
+  .particle.triangle {
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid;
+    border-radius: 0;
+  }
+  
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-diagonal {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(200px, -100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-zigzag {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg);
+      opacity: 0;
+    }
+    25% {
+      transform: translate(100px, 75vh) rotate(90deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50px, 50vh) rotate(180deg);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(75px, 25vh) rotate(270deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, -100px) rotate(360deg);
+      opacity: 0;
+    }
   }
   
   .banner {
@@ -268,6 +664,32 @@ import Footer from '../components/Footer.astro';
     line-height: 1;
   }
 
+  .glow-text {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 15px rgba(30, 64, 175, 0.4),
+      0 0 20px rgba(30, 64, 175, 0.3);
+    animation: glow-pulse 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow-pulse {
+    from {
+      text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 15px rgba(30, 64, 175, 0.4),
+        0 0 20px rgba(30, 64, 175, 0.3);
+    }
+    to {
+      text-shadow: 
+        0 0 8px rgba(255, 255, 255, 1),
+        0 0 16px rgba(255, 255, 255, 0.8),
+        0 0 24px rgba(30, 64, 175, 0.6),
+        0 0 32px rgba(30, 64, 175, 0.4);
+    }
+  }
+
   
   .memories-page {
     padding: 80px 0;
@@ -314,11 +736,43 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
   }
   
   .memory-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  
+  .memory-card:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 64, 175, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .zoom-icon {
+    font-size: 2rem;
+    color: white;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
   }
   
   .memory-card img {
@@ -349,6 +803,85 @@ import Footer from '../components/Footer.astro';
     line-height: 1.5;
   }
   
+  /* Lightbox Styles */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+  
+  .lightbox.active {
+    display: block;
+  }
+  
+  .lightbox-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .lightbox-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    position: relative;
+  }
+  
+  .lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 20px;
+  }
+  
+  .lightbox-prev {
+    left: 20px;
+  }
+  
+  .lightbox-next {
+    right: 20px;
+  }
   
   /* Large monitors */
   @media (min-width: 1920px) {

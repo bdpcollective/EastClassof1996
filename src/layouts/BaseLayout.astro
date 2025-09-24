@@ -1,0 +1,104 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://static.wixstatic.com/media/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg/v1/fill/w_2500,h_1666,al_c/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://static.wixstatic.com/media/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg/v1/fill/w_2500,h_1666,al_c/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg" />
+  </head>
+  <body>
+    <div id="page-transition" class="page-transition">
+      <slot />
+    </div>
+    
+    <script>
+      // Smooth page transitions
+      function initPageTransitions() {
+        const links = document.querySelectorAll('a[href^="/"]');
+        const pageTransition = document.getElementById('page-transition');
+        
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Skip if it's the current page
+            if (window.location.pathname === href || window.location.pathname + '/' === href) {
+              return;
+            }
+            
+            e.preventDefault();
+            
+            // Add fade out class
+            pageTransition.classList.add('fade-out');
+            
+            // Navigate after animation
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          });
+        });
+        
+        // Fade in on page load
+        document.addEventListener('DOMContentLoaded', () => {
+          pageTransition.classList.add('fade-in');
+        });
+      }
+      
+      // Initialize transitions
+      initPageTransitions();
+    </script>
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-width: 320px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .page-transition {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .page-transition.fade-in {
+    opacity: 1;
+  }
+  
+  .page-transition.fade-out {
+    opacity: 0;
+  }
+</style>

@@ -27,9 +27,12 @@ import Footer from '../components/Footer.astro';
     <meta name="twitter:image" content="https://static.wixstatic.com/media/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg/v1/fill/w_2500,h_1666,al_c/4c7a9c_a04a64850b9f47c7adff59cfdc024a99~mv2.jpg" />
   </head>
   <body>
+    <!-- Particle System Background -->
+    <div id="particles-container" class="particles-container"></div>
+    
     <Header />
     
-    <div class="banner">
+    <div class="banner" id="parallax-banner">
       <div class="container">
         <div class="banner-section banner-left">
           <p>30TH HIGH</p>
@@ -45,7 +48,7 @@ import Footer from '../components/Footer.astro';
       </div>
     </div>
 
-    <div class="hero-section">
+    <div class="hero-section" id="parallax-hero">
       <div class="hero-container">
         <div class="hero-left">
           <h2>30 Years of Memories, Friendships & Adventures</h2>
@@ -53,7 +56,7 @@ import Footer from '../components/Footer.astro';
           <p>Reconnect with classmates and celebrate three decades of life after high school.</p>
         </div>
         <div class="hero-right">
-          <img src="/EastClassof1996/lincoln-east-high-school-lincoln-ne-3-schoolphoto.avif" alt="Lincoln East High School" />
+          <img src="/EastClassof1996/lincoln-east-high-school-lincoln-ne-3-schoolphoto.avif" alt="Lincoln East High School" id="parallax-image" />
         </div>
       </div>
     </div>
@@ -63,6 +66,191 @@ import Footer from '../components/Footer.astro';
       <Memories />
     </main>
     <Footer />
+    
+    <script>
+      
+      // Parallax scrolling effect
+      function initParallax() {
+        const banner = document.getElementById('parallax-banner');
+        const hero = document.getElementById('parallax-hero');
+        const heroImage = document.getElementById('parallax-image');
+        
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * -0.3;
+          const imageRate = scrolled * 0.2;
+          
+          if (banner) {
+            banner.style.transform = `translateY(${rate}px)`;
+          }
+          
+          if (heroImage) {
+            heroImage.style.transform = `translateY(${imageRate}px) scale(1.05)`;
+          }
+        });
+      }
+      
+      // Smooth page transitions
+      function initPageTransitions() {
+        const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+        
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Skip external links and same page
+            if (href.startsWith('http') || href === window.location.pathname) {
+              return;
+            }
+            
+            e.preventDefault();
+            
+            // Add fade out effect
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            
+            // Navigate after fade out
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          });
+        });
+      }
+      
+      // Page fade in effect
+      function fadeInPage() {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease-in';
+        setTimeout(() => {
+          document.body.style.opacity = '1';
+        }, 50);
+      }
+      
+      // Particle System
+      function createParticleSystem() {
+        const container = document.getElementById('particles-container');
+        if (!container) return;
+        
+        const colors = [
+          '#1e40af',  // Primary blue
+          '#3b82f6',  // Lighter blue  
+          '#60a5fa',  // Even lighter blue
+          '#93c5fd',  // Light blue
+          '#dbeafe',  // Very light blue
+          '#ffffff',  // White
+          'rgba(255, 255, 255, 0.8)', // Semi-transparent white
+          'rgba(30, 64, 175, 0.6)',   // Semi-transparent blue
+        ];
+        
+        const shapes = ['circle', 'square', 'triangle'];
+        const animations = ['float-up', 'float-diagonal', 'float-zigzag'];
+        
+        function createParticle() {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          // Random shape
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          particle.classList.add(shape);
+          
+          // Random size
+          const size = Math.random() * 8 + 2; // 2-10px
+          if (shape !== 'triangle') {
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+          }
+          
+          // Random color
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          if (shape === 'triangle') {
+            particle.style.borderBottomColor = color;
+          } else {
+            particle.style.backgroundColor = color;
+          }
+          
+          // Random position
+          particle.style.left = Math.random() * 100 + '%';
+          
+          // Random animation
+          const animation = animations[Math.floor(Math.random() * animations.length)];
+          particle.style.animation = `${animation} ${Math.random() * 10 + 5}s linear infinite`;
+          
+          // Random delay
+          particle.style.animationDelay = Math.random() * 5 + 's';
+          
+          container.appendChild(particle);
+          
+          // Remove particle after animation completes
+          setTimeout(() => {
+            if (container.contains(particle)) {
+              container.removeChild(particle);
+            }
+          }, 15000);
+        }
+        
+        // Create initial particles
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => createParticle(), Math.random() * 5000);
+        }
+        
+        // Continue creating particles
+        setInterval(() => {
+          if (Math.random() > 0.7) { // 30% chance each interval
+            createParticle();
+          }
+        }, 800);
+      }
+      
+      // Enhanced particle burst for special moments
+      function createParticleBurst() {
+        const container = document.getElementById('particles-container');
+        if (!container) return;
+        
+        const colors = ['#1e40af', '#3b82f6', '#60a5fa', '#ffffff'];
+        
+        for (let i = 0; i < 30; i++) {
+          setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.className = 'particle circle';
+            
+            const size = Math.random() * 6 + 4;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animation = `float-up ${Math.random() * 3 + 2}s ease-out forwards`;
+            
+            container.appendChild(particle);
+            
+            setTimeout(() => {
+              if (container.contains(particle)) {
+                container.removeChild(particle);
+              }
+            }, 5000);
+          }, Math.random() * 1000);
+        }
+      }
+      
+      // Initialize effects when page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        // Fade in page
+        fadeInPage();
+        
+        // Initialize parallax
+        initParallax();
+        
+        // Initialize transitions
+        initPageTransitions();
+        
+        // Start particle system
+        createParticleSystem();
+        
+        // Create particle burst after page loads
+        setTimeout(() => {
+          createParticleBurst();
+        }, 2000);
+      });
+    </script>
   </body>
 </html>
 
@@ -81,6 +269,100 @@ import Footer from '../components/Footer.astro';
   
   * {
     box-sizing: border-box;
+  }
+  
+  /* Particle System */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+  
+  .particle.circle {
+    border-radius: 50%;
+  }
+  
+  .particle.square {
+    border-radius: 2px;
+  }
+  
+  .particle.triangle {
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid;
+    border-radius: 0;
+  }
+  
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-diagonal {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(200px, -100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-zigzag {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg);
+      opacity: 0;
+    }
+    25% {
+      transform: translate(100px, 75vh) rotate(90deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50px, 50vh) rotate(180deg);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(75px, 25vh) rotate(270deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, -100px) rotate(360deg);
+      opacity: 0;
+    }
   }
 
   .banner {
@@ -140,6 +422,7 @@ import Footer from '../components/Footer.astro';
     font-weight: 400;
     line-height: 1;
   }
+
 
   .hero-section {
     background: #f9fafb;

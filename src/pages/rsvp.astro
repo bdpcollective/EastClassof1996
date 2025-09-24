@@ -1,0 +1,1008 @@
+---
+// RSVP page
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <title>RSVP | Lincoln East High School Class of 1996</title>
+    <meta name="description" content="RSVP for the Lincoln East High School Class of 1996 30th Reunion. Secure your spot for this memorable celebration!" />
+  </head>
+  <body>
+    <!-- Particle System Background -->
+    <div id="particles-container" class="particles-container"></div>
+    
+    <Header />
+    
+    <div class="banner">
+      <div class="container">
+        <div class="banner-section banner-left">
+          <p>30TH HIGH</p>
+          <p>SCHOOL REUNION</p>
+        </div>
+        <div class="banner-section banner-center">
+          <p class="class-year glow-text">CLASS OF 1996</p>
+        </div>
+        <div class="banner-section banner-right">
+          <p>LINCOLN</p>
+          <p>NEBRASKA</p>
+        </div>
+      </div>
+    </div>
+    
+    <main>
+      <section class="rsvp-page">
+        <div class="container">
+          <div class="rsvp-header">
+            <h1>Reserve Your Spot</h1>
+            <p class="rsvp-subtitle">Join us for an unforgettable reunion celebration</p>
+            <div class="event-details">
+              <div class="detail-item">
+                <span>September 4-6, 2026</span>
+              </div>
+              <div class="detail-item">
+                <span>Lincoln, Nebraska</span>
+              </div>
+              <div class="detail-item">
+                <span>30 Years of Memories</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rsvp-form-container">
+            <form id="rsvpForm" class="rsvp-form">
+              <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="maidenName">Maiden Name (if applicable)</label>
+                  <input type="text" id="maidenName" name="maidenName">
+                </div>
+              </div>
+              
+              <div class="form-section">
+                <h2>Event Attendance</h2>
+                <div class="event-checkboxes">
+                  <div class="checkbox-group">
+                    <input type="checkbox" id="footballGame" name="events" value="Football Game">
+                    <label for="footballGame">
+                      <span class="checkbox-custom"></span>
+                      Friday Night Football Game (Sept 4) - Optional, tickets not included
+                    </label>
+                  </div>
+                  <div class="checkbox-group">
+                    <input type="checkbox" id="schoolTour" name="events" value="School Tour">
+                    <label for="schoolTour">
+                      <span class="checkbox-custom"></span>
+                      School Tour (Sept 5, 8:00 AM)
+                    </label>
+                  </div>
+                  <div class="checkbox-group">
+                    <input type="checkbox" id="socialEvent" name="events" value="Social Event">
+                    <label for="socialEvent">
+                      <span class="checkbox-custom"></span>
+                      Saturday Social Event (Sept 6, 7:00 PM) - $50 per person, Venmo @[venmoaddress]
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-section">
+                <h2>Guest Information</h2>
+                <div class="form-group">
+                  <label for="guestCount">Number of Guests</label>
+                  <select id="guestCount" name="guestCount">
+                    <option value="0">Just me</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4+ Guests</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="guestNames">Guest Names</label>
+                  <textarea id="guestNames" name="guestNames" placeholder="Please list the names of your guests..."></textarea>
+                </div>
+              </div>
+              
+              <div class="form-section">
+                <h2>Additional Information</h2>
+                <div class="form-group">
+                  <label for="dietaryRestrictions">Dietary Restrictions or Special Needs</label>
+                  <textarea id="dietaryRestrictions" name="dietaryRestrictions" placeholder="Any allergies, dietary restrictions, or accessibility needs..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label for="comments">Comments or Messages</label>
+                  <textarea id="comments" name="comments" placeholder="Share any memories, excitement, or special requests..."></textarea>
+                </div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                  <span class="btn-text">Submit RSVP</span>
+                  <span class="btn-loading">Submitting...</span>
+                </button>
+              </div>
+            </form>
+            
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+              <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h2>RSVP Submitted Successfully!</h2>
+                <p>Thank you for registering for our 30th reunion. We can't wait to see you in Lincoln!</p>
+                <button class="success-btn" onclick="resetForm()">Submit Another RSVP</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    
+    <script>
+      // Google Sheets integration
+      const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzcqKrx8njSlXDUXYSrYIXWfJsAMnJhy-HHlxCtkzzGUTi_NCL_RlV06a1HYJl3peDw-w/exec';
+      
+      // Form submission
+      function submitToGoogleSheets(formData) {
+        return fetch(GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(formData)
+        });
+      }
+      
+      // RSVP Form handling
+      function initRSVPForm() {
+        const form = document.getElementById('rsvpForm');
+        const submitBtn = form.querySelector('.submit-btn');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          // Show loading state
+          submitBtn.classList.add('loading');
+          
+          // Collect form data
+          const formData = new FormData(form);
+          const events = [];
+          formData.getAll('events').forEach(event => events.push(event));
+          
+          const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            maidenName: formData.get('maidenName'),
+            events: events.join(', '),
+            guestCount: formData.get('guestCount'),
+            guestNames: formData.get('guestNames'),
+            dietaryRestrictions: formData.get('dietaryRestrictions'),
+            comments: formData.get('comments'),
+            timestamp: new Date().toLocaleString()
+          };
+          
+          try {
+            // Submit to Google Sheets
+            await submitToGoogleSheets(data);
+            
+            // Show success message with confetti
+            form.style.display = 'none';
+            successMessage.classList.add('active');
+            
+            // Trigger confetti
+            createConfetti();
+            
+          } catch (error) {
+            console.error('Error submitting RSVP:', error);
+            alert('There was an error submitting your RSVP. Please try again.');
+          } finally {
+            // Hide loading state
+            submitBtn.classList.remove('loading');
+          }
+        });
+      }
+      
+      // Reset form function
+      function resetForm() {
+        const form = document.getElementById('rsvpForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.reset();
+        form.style.display = 'block';
+        successMessage.classList.remove('active');
+      }
+      
+      // Confetti effect
+      function createConfetti() {
+        const colors = ['#1e40af', '#3b82f6', '#60a5fa', '#93c5fd', '#dbeafe'];
+        const confettiCount = 100;
+        
+        for (let i = 0; i < confettiCount; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.animationDelay = Math.random() * 3 + 's';
+          confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+          document.body.appendChild(confetti);
+          
+          // Remove confetti after animation
+          setTimeout(() => {
+            confetti.remove();
+          }, 4000);
+        }
+      }
+      
+      // Smooth page transitions
+      function initPageTransitions() {
+        const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+        
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            if (!href || href.startsWith('http') || href === window.location.pathname) {
+              return;
+            }
+            
+            e.preventDefault();
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          });
+        });
+      }
+      
+      // Page fade in effect
+      function fadeInPage() {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease-in';
+        setTimeout(() => {
+          document.body.style.opacity = '1';
+        }, 50);
+      }
+      
+      // Particle System
+      function createParticleSystem() {
+        const container = document.getElementById('particles-container');
+        if (!container) return;
+        
+        const colors = [
+          '#1e40af',  // Primary blue
+          '#3b82f6',  // Lighter blue  
+          '#60a5fa',  // Even lighter blue
+          '#93c5fd',  // Light blue
+          '#dbeafe',  // Very light blue
+          '#ffffff',  // White
+          'rgba(255, 255, 255, 0.8)', // Semi-transparent white
+          'rgba(30, 64, 175, 0.6)',   // Semi-transparent blue
+        ];
+        
+        const shapes = ['circle', 'square', 'triangle'];
+        const animations = ['float-up', 'float-diagonal', 'float-zigzag'];
+        
+        function createParticle() {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          // Random shape
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          particle.classList.add(shape);
+          
+          // Random size
+          const size = Math.random() * 8 + 2; // 2-10px
+          if (shape !== 'triangle') {
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+          }
+          
+          // Random color
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          if (shape === 'triangle') {
+            particle.style.borderBottomColor = color;
+          } else {
+            particle.style.backgroundColor = color;
+          }
+          
+          // Random position
+          particle.style.left = Math.random() * 100 + '%';
+          
+          // Random animation
+          const animation = animations[Math.floor(Math.random() * animations.length)];
+          particle.style.animation = `${animation} ${Math.random() * 10 + 5}s linear infinite`;
+          
+          // Random delay
+          particle.style.animationDelay = Math.random() * 5 + 's';
+          
+          container.appendChild(particle);
+          
+          // Remove particle after animation completes
+          setTimeout(() => {
+            if (container && container.contains(particle)) {
+              container.removeChild(particle);
+            }
+          }, 15000);
+        }
+        
+        // Create initial particles
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => createParticle(), Math.random() * 5000);
+        }
+        
+        // Continue creating particles
+        setInterval(() => {
+          if (Math.random() > 0.6) { // 40% chance each interval - more for celebration
+            createParticle();
+          }
+        }, 800);
+      }
+      
+      // Initialize everything
+      document.addEventListener('DOMContentLoaded', () => {
+        fadeInPage();
+        initPageTransitions();
+        initRSVPForm();
+        createParticleSystem();
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-width: 320px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Particle System */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+  
+  .particle.circle {
+    border-radius: 50%;
+  }
+  
+  .particle.square {
+    border-radius: 2px;
+  }
+  
+  .particle.triangle {
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid;
+    border-radius: 0;
+  }
+  
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-diagonal {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(200px, -100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-zigzag {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg);
+      opacity: 0;
+    }
+    25% {
+      transform: translate(100px, 75vh) rotate(90deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50px, 50vh) rotate(180deg);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(75px, 25vh) rotate(270deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, -100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .banner {
+    background: #1e40af;
+    color: white;
+    padding: 32px 0;
+  }
+  
+  .banner .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .banner-section {
+    text-align: center;
+    padding: 0 32px;
+  }
+  
+  .banner-left {
+    flex: 0.5;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .banner-center {
+    flex: 3;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .banner-right {
+    flex: 0.5;
+  }
+  
+  .banner-section p {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+  }
+  
+  .banner-left p {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  
+  .banner-right p {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  
+  .class-year {
+    font-family: 'Noto Serif', serif;
+    font-size: 84px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .glow-text {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 15px rgba(30, 64, 175, 0.4),
+      0 0 20px rgba(30, 64, 175, 0.3);
+    animation: glow-pulse 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow-pulse {
+    from {
+      text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 15px rgba(30, 64, 175, 0.4),
+        0 0 20px rgba(30, 64, 175, 0.3);
+    }
+    to {
+      text-shadow: 
+        0 0 8px rgba(255, 255, 255, 1),
+        0 0 16px rgba(255, 255, 255, 0.8),
+        0 0 24px rgba(30, 64, 175, 0.6),
+        0 0 32px rgba(30, 64, 175, 0.4);
+    }
+  }
+  
+  .rsvp-page {
+    padding: 80px 0;
+    background: #f9fafb;
+    min-height: 80vh;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .rsvp-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .rsvp-header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px;
+    font-weight: 100;
+    color: #1e40af;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .rsvp-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #666;
+    margin: 0 0 40px 0;
+  }
+  
+  .event-details {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: #1e40af;
+    font-weight: 500;
+  }
+  
+  .detail-icon {
+    font-size: 1.2rem;
+  }
+  
+  .rsvp-form-container {
+    position: relative;
+  }
+  
+  .rsvp-form {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-section {
+    margin-bottom: 40px;
+  }
+  
+  .form-section h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #1e40af;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .event-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .checkbox-group {
+    position: relative;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    display: none;
+  }
+  
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #374151;
+    padding: 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .checkbox-group input[type="checkbox"]:checked + label {
+    background: rgba(30, 64, 175, 0.05);
+    border-color: #1e40af;
+  }
+  
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 4px;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .checkbox-group input[type="checkbox"]:checked + label .checkbox-custom {
+    background: #1e40af;
+    border-color: #1e40af;
+  }
+  
+  .checkbox-group input[type="checkbox"]:checked + label .checkbox-custom::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .form-actions {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .submit-btn {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+  }
+  
+  .submit-btn.loading .btn-text {
+    opacity: 0;
+  }
+  
+  .submit-btn.loading .btn-loading {
+    opacity: 1;
+  }
+  
+  .btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .success-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .success-message.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .success-content {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .success-content h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    color: #1e40af;
+    margin: 0 0 15px 0;
+  }
+  
+  .success-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 30px 0;
+  }
+  
+  .success-btn {
+    background: #1e40af;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .success-btn:hover {
+    background: #1e3a8b;
+    transform: translateY(-2px);
+  }
+  
+  /* Confetti Animation */
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    z-index: 1000;
+    animation: confetti-fall linear forwards;
+  }
+  
+  @keyframes confetti-fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .class-year {
+      font-size: 36px;
+    }
+    
+    .banner-section {
+      padding: 0 16px;
+    }
+    
+    .banner-left p,
+    .banner-right p {
+      font-size: 14px;
+    }
+    
+    .rsvp-header h1 {
+      font-size: 32px;
+    }
+    
+    .event-details {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .rsvp-form {
+      padding: 30px 20px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+    
+    .submit-btn {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner {
+      padding: 15px 0;
+    }
+    
+    .class-year {
+      font-size: 22px;
+    }
+    
+    .banner-section {
+      padding: 0 3px;
+    }
+    
+    .banner-left p,
+    .banner-right p {
+      font-size: 9px;
+      line-height: 1.1;
+    }
+    
+    .rsvp-page {
+      padding: 40px 0;
+    }
+    
+    .rsvp-header h1 {
+      font-size: 24px;
+    }
+    
+    .rsvp-subtitle {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 390px) {
+    .class-year {
+      font-size: 20px;
+    }
+    
+    .banner-left p,
+    .banner-right p {
+      font-size: 8px;
+    }
+    
+    .banner-section {
+      padding: 0 2px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .banner {
+      padding: 12px 0;
+    }
+    
+    .class-year {
+      font-size: 18px;
+    }
+    
+    .banner-left p,
+    .banner-right p {
+      font-size: 7px;
+    }
+    
+    .banner-section {
+      padding: 0 1px;
+    }
+  }
+</style>

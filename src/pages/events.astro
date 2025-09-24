@@ -17,6 +17,9 @@ import Footer from '../components/Footer.astro';
     <meta name="description" content="View all reunion events for the Lincoln East High School Class of 1996 30th Reunion. Football game, school tour, and social events." />
   </head>
   <body>
+    <!-- Particle System Background -->
+    <div id="particles-container" class="particles-container"></div>
+    
     <Header />
     
     <div class="banner">
@@ -26,7 +29,7 @@ import Footer from '../components/Footer.astro';
           <p>SCHOOL REUNION</p>
         </div>
         <div class="banner-section banner-center">
-          <p class="class-year">CLASS OF 1996</p>
+          <p class="class-year glow-text">CLASS OF 1996</p>
         </div>
         <div class="banner-section banner-right">
           <p>LINCOLN</p>
@@ -51,7 +54,7 @@ import Footer from '../components/Footer.astro';
                 <p class="time">7:00 PM</p>
                 <p class="location">Seacrest Field</p>
                 <p class="address">Address TBD</p>
-                <p class="description">Cheer on the Spartans at the Friday night football game!</p>
+                <p class="description">Cheer on the Spartans at the Friday night football game! Optional event - you are responsible for your own tickets.</p>
               </div>
             </div>
             
@@ -71,7 +74,7 @@ import Footer from '../components/Footer.astro';
             
             <div class="event-card">
               <div class="event-date">
-                <span class="day">5</span>
+                <span class="day">6</span>
                 <span class="month">SEP</span>
               </div>
               <div class="event-details">
@@ -79,7 +82,7 @@ import Footer from '../components/Footer.astro';
                 <p class="time">7:00 PM - 10:00 PM</p>
                 <p class="location">Location TBD</p>
                 <p class="address">Address TBD</p>
-                <p class="description">Join us for a casual social gathering to reconnect with classmates.</p>
+                <p class="description">Join us for a casual social gathering to reconnect with classmates. $50 per person. Venmo @[venmoaddress]</p>
               </div>
             </div>
           </div>
@@ -92,6 +95,132 @@ import Footer from '../components/Footer.astro';
     </main>
     
     <Footer />
+    
+    <script>
+      
+      // Smooth page transitions
+      function initPageTransitions() {
+        const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+        
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Skip external links and same page
+            if (!href || href.startsWith('http') || href === window.location.pathname) {
+              return;
+            }
+            
+            e.preventDefault();
+            
+            // Add fade out effect
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            
+            // Navigate after fade out
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          });
+        });
+      }
+      
+      // Page fade in effect
+      function fadeInPage() {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease-in';
+        setTimeout(() => {
+          document.body.style.opacity = '1';
+        }, 50);
+      }
+      
+      // Particle System
+      function createParticleSystem() {
+        const container = document.getElementById('particles-container');
+        if (!container) return;
+        
+        const colors = [
+          '#1e40af',  // Primary blue
+          '#3b82f6',  // Lighter blue  
+          '#60a5fa',  // Even lighter blue
+          '#93c5fd',  // Light blue
+          '#dbeafe',  // Very light blue
+          '#ffffff',  // White
+          'rgba(255, 255, 255, 0.8)', // Semi-transparent white
+          'rgba(30, 64, 175, 0.6)',   // Semi-transparent blue
+        ];
+        
+        const shapes = ['circle', 'square', 'triangle'];
+        const animations = ['float-up', 'float-diagonal', 'float-zigzag'];
+        
+        function createParticle() {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          // Random shape
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          particle.classList.add(shape);
+          
+          // Random size
+          const size = Math.random() * 8 + 2; // 2-10px
+          if (shape !== 'triangle') {
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+          }
+          
+          // Random color
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          if (shape === 'triangle') {
+            particle.style.borderBottomColor = color;
+          } else {
+            particle.style.backgroundColor = color;
+          }
+          
+          // Random position
+          particle.style.left = Math.random() * 100 + '%';
+          
+          // Random animation
+          const animation = animations[Math.floor(Math.random() * animations.length)];
+          particle.style.animation = `${animation} ${Math.random() * 10 + 5}s linear infinite`;
+          
+          // Random delay
+          particle.style.animationDelay = Math.random() * 5 + 's';
+          
+          container.appendChild(particle);
+          
+          // Remove particle after animation completes
+          setTimeout(() => {
+            if (container.contains(particle)) {
+              container.removeChild(particle);
+            }
+          }, 15000);
+        }
+        
+        // Create initial particles
+        for (let i = 0; i < 15; i++) {
+          setTimeout(() => createParticle(), Math.random() * 5000);
+        }
+        
+        // Continue creating particles
+        setInterval(() => {
+          if (Math.random() > 0.7) { // 30% chance each interval
+            createParticle();
+          }
+        }, 1000);
+      }
+      
+      // Initialize effects when page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        // Fade in page
+        fadeInPage();
+        
+        // Initialize transitions
+        initPageTransitions();
+        
+        // Start particle system
+        createParticleSystem();
+      });
+    </script>
   </body>
 </html>
 
@@ -110,6 +239,100 @@ import Footer from '../components/Footer.astro';
   
   * {
     box-sizing: border-box;
+  }
+  
+  /* Particle System */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+  
+  .particle.circle {
+    border-radius: 50%;
+  }
+  
+  .particle.square {
+    border-radius: 2px;
+  }
+  
+  .particle.triangle {
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid;
+    border-radius: 0;
+  }
+  
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-diagonal {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(200px, -100px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float-zigzag {
+    0% {
+      transform: translate(0, 100vh) rotate(0deg);
+      opacity: 0;
+    }
+    25% {
+      transform: translate(100px, 75vh) rotate(90deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50px, 50vh) rotate(180deg);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(75px, 25vh) rotate(270deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, -100px) rotate(360deg);
+      opacity: 0;
+    }
   }
   
   .banner {
@@ -170,6 +393,32 @@ import Footer from '../components/Footer.astro';
     line-height: 1;
   }
 
+  .glow-text {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 15px rgba(30, 64, 175, 0.4),
+      0 0 20px rgba(30, 64, 175, 0.3);
+    animation: glow-pulse 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow-pulse {
+    from {
+      text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 15px rgba(30, 64, 175, 0.4),
+        0 0 20px rgba(30, 64, 175, 0.3);
+    }
+    to {
+      text-shadow: 
+        0 0 8px rgba(255, 255, 255, 1),
+        0 0 16px rgba(255, 255, 255, 0.8),
+        0 0 24px rgba(30, 64, 175, 0.6),
+        0 0 32px rgba(30, 64, 175, 0.4);
+    }
+  }
+
   
   .events-page {
     padding: 80px 0;
@@ -212,17 +461,48 @@ import Footer from '../components/Footer.astro';
   
   .event-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     display: flex;
     gap: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.03), transparent);
+    transition: left 0.6s ease;
   }
   
   .event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 15px 35px rgba(30, 64, 175, 0.15),
+      0 5px 15px rgba(0,0,0,0.08);
+    border: 1px solid rgba(30, 64, 175, 0.1);
+  }
+  
+  .event-card:hover::before {
+    left: 100%;
+  }
+  
+  .event-card:hover .event-date {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+  }
+  
+  .event-card:hover .event-details h3 {
+    color: #1e3a8b;
+    transform: translateX(5px);
   }
   
   .event-date {
@@ -233,6 +513,7 @@ import Footer from '../components/Footer.astro';
     text-align: center;
     min-width: 80px;
     height: fit-content;
+    transition: all 0.3s ease;
   }
   
   .event-date .day {
@@ -256,6 +537,7 @@ import Footer from '../components/Footer.astro';
     font-weight: 400;
     color: #1e40af;
     margin: 0 0 10px 0;
+    transition: all 0.3s ease;
   }
   
   .event-details .time {

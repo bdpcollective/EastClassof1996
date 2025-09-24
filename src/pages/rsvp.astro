@@ -51,9 +51,6 @@ import Footer from '../components/Footer.astro';
               <div class="detail-item">
                 <span>Lincoln, Nebraska</span>
               </div>
-              <div class="detail-item">
-                <span>30 Years of Memories</span>
-              </div>
             </div>
           </div>
           
@@ -75,11 +72,11 @@ import Footer from '../components/Footer.astro';
                 <div class="form-row">
                   <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
                   </div>
                   <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}|\([0-9]{3}\) [0-9]{3}-[0-9]{4}|[0-9]{10}" title="Please enter a valid phone number (e.g., 555-123-4567, (555) 123-4567, or 5551234567)" placeholder="555-123-4567">
                   </div>
                 </div>
                 

@@ -29,13 +29,13 @@ import Footer from '../components/Footer.astro';
       <section class="events-page">
         <div class="container">
           <div class="events-grid">
-            <div class="event-card">
+            <div class="event-card disabled">
               <div class="event-date">
                 <span class="day">4</span>
                 <span class="month">SEP</span>
               </div>
               <div class="event-details">
-                <h3>Lincoln East Football Game</h3>
+                <h3>Possible Football Game - TBD</h3>
                 <p class="time">7:00 PM</p>
                 <p class="location">Seacrest Field</p>
                 <p class="address">Address TBD</p>
@@ -371,7 +371,7 @@ import Footer from '../components/Footer.astro';
     position: relative;
     overflow: hidden;
   }
-  
+
   .event-card::before {
     content: '';
     position: absolute;
@@ -382,27 +382,60 @@ import Footer from '../components/Footer.astro';
     background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.03), transparent);
     transition: left 0.6s ease;
   }
-  
+
   .event-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 
+    box-shadow:
       0 15px 35px rgba(30, 64, 175, 0.15),
       0 5px 15px rgba(0,0,0,0.08);
     border: 1px solid rgba(30, 64, 175, 0.1);
   }
-  
+
   .event-card:hover::before {
     left: 100%;
   }
-  
+
   .event-card:hover .event-date {
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
   }
-  
+
   .event-card:hover .event-details h3 {
     color: #1e3a8b;
     transform: translateX(5px);
+  }
+
+  .event-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .event-card.disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: none;
+  }
+
+  .event-card.disabled:hover::before {
+    left: -100%;
+  }
+
+  .event-card.disabled:hover .event-date {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .event-card.disabled:hover .event-details h3 {
+    color: #9ca3af;
+    transform: none;
+  }
+
+  .event-card.disabled .event-date {
+    background: #9ca3af;
+  }
+
+  .event-card.disabled .event-details h3 {
+    color: #9ca3af;
   }
   
   .event-date {

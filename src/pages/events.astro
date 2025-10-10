@@ -1,6 +1,7 @@
 ---
 // Events page
 import Header from '../components/Header.astro';
+import Banner from '../components/Banner.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -21,24 +22,8 @@ import Footer from '../components/Footer.astro';
     <div id="particles-container" class="particles-container"></div>
     
     <Header />
-    
-    <div class="banner">
-      <div class="container">
-        <div class="banner-section banner-left">
-          <p>30TH HIGH</p>
-          <p>SCHOOL REUNION</p>
-        </div>
-        <div class="banner-section banner-center">
-          <p class="class-year">CLASS OF 1996</p>
-        </div>
-        <div class="banner-section banner-right">
-          <p>LINCOLN</p>
-          <p>NEBRASKA</p>
-        </div>
-      </div>
-    </div>
+    <Banner />
 
-    
     <main>
       
       <section class="events-page">
@@ -334,92 +319,7 @@ import Footer from '../components/Footer.astro';
       opacity: 0;
     }
   }
-  
-  .banner {
-    background: #1e40af;
-    color: white;
-    padding: 32px 0;
-  }
-  
-  .banner .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .banner-section {
-    text-align: center;
-    padding: 0 32px;
-  }
-  
-  .banner-left {
-    flex: 0.5;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  
-  .banner-center {
-    flex: 3;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  
-  .banner-right {
-    flex: 0.5;
-  }
-  
-  .banner-section p {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
-    letter-spacing: 0.5px;
-  }
-  
-  .banner-left p {
-    font-size: 16px;
-    line-height: 1.2;
-  }
-  
-  .banner-right p {
-    font-size: 16px;
-    line-height: 1.2;
-  }
-  
-  .class-year {
-    font-family: 'Noto Serif', serif;
-    font-size: 84px;
-    font-weight: 400;
-    line-height: 1;
-  }
 
-  .glow-text {
-    text-shadow: 
-      0 0 5px rgba(255, 255, 255, 0.8),
-      0 0 10px rgba(255, 255, 255, 0.6),
-      0 0 15px rgba(30, 64, 175, 0.4),
-      0 0 20px rgba(30, 64, 175, 0.3);
-    animation: glow-pulse 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow-pulse {
-    from {
-      text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.8),
-        0 0 10px rgba(255, 255, 255, 0.6),
-        0 0 15px rgba(30, 64, 175, 0.4),
-        0 0 20px rgba(30, 64, 175, 0.3);
-    }
-    to {
-      text-shadow: 
-        0 0 8px rgba(255, 255, 255, 1),
-        0 0 16px rgba(255, 255, 255, 0.8),
-        0 0 24px rgba(30, 64, 175, 0.6),
-        0 0 32px rgba(30, 64, 175, 0.4);
-    }
-  }
-
-  
   .events-page {
     padding: 80px 0;
     background: #f9fafb;
@@ -598,15 +498,6 @@ import Footer from '../components/Footer.astro';
   
   /* Large monitors */
   @media (min-width: 1920px) {
-    .banner .container {
-      max-width: 1600px;
-    }
-    
-    .class-year {
-      font-size: 96px;
-    }
-    
-    
     .container {
       max-width: 1600px;
     }
@@ -628,29 +519,8 @@ import Footer from '../components/Footer.astro';
     }
   }
   
-  /* Tablet */
-  @media (max-width: 1024px) {
-    .class-year {
-      font-size: 64px;
-    }
-  }
-  
   /* Mobile styles */
   @media (max-width: 768px) {
-    .class-year {
-      font-size: 36px;
-    }
-    
-    .banner-section {
-      padding: 0 16px;
-    }
-    
-    .banner-left p,
-    .banner-right p {
-      font-size: 14px;
-    }
-    
-    
     .events-page {
       padding: 60px 0;
     }
@@ -681,25 +551,6 @@ import Footer from '../components/Footer.astro';
   }
   
   @media (max-width: 480px) {
-    .banner {
-      padding: 15px 0;
-    }
-    
-    .class-year {
-      font-size: 22px;
-    }
-    
-    .banner-section {
-      padding: 0 3px;
-    }
-    
-    .banner-left p,
-    .banner-right p {
-      font-size: 9px;
-      line-height: 1.1;
-    }
-    
-    
     .events-page {
       padding: 40px 0;
     }
@@ -741,36 +592,8 @@ import Footer from '../components/Footer.astro';
   }
   
   @media (max-width: 390px) {
-    .class-year {
-      font-size: 20px;
-    }
-    
-    .banner-left p,
-    .banner-right p {
-      font-size: 8px;
-    }
-    
-    .banner-section {
-      padding: 0 2px;
-    }
   }
-  
+
   @media (max-width: 320px) {
-    .banner {
-      padding: 12px 0;
-    }
-    
-    .class-year {
-      font-size: 18px;
-    }
-    
-    .banner-left p,
-    .banner-right p {
-      font-size: 7px;
-    }
-    
-    .banner-section {
-      padding: 0 1px;
-    }
   }
 </style>

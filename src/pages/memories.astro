@@ -25,9 +25,10 @@ import Footer from '../components/Footer.astro';
     <Banner />
 
     <main>
-      
+
       <section class="memories-page">
         <div class="container">
+          <h2 class="section-title">MEMORIES</h2>
           <div class="memories-gallery">
             <div class="memory-card" data-lightbox="gallery">
               <img src="/EastClassof1996/images/465127603_9055608791116063_4710872640504337783_n.jpg" alt="Class Memory" data-src="/EastClassof1996/images/465127603_9055608791116063_4710872640504337783_n.jpg" />
@@ -593,7 +594,7 @@ import Footer from '../components/Footer.astro';
 
   .memories-page {
     padding: 80px 0;
-    background: #f9fafb;
+    background: rgba(30, 64, 175, 0.8);
     min-height: 80vh;
   }
   
@@ -602,7 +603,18 @@ import Footer from '../components/Footer.astro';
     margin: 0 auto;
     padding: 0 20px;
   }
-  
+
+  .section-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px;
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    margin: 0 0 60px 0;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+  }
+
   .page-title {
     font-family: 'Roboto', sans-serif;
     font-size: 48px;

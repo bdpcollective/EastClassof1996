@@ -1,721 +1,519 @@
 ---
-// Memories page
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Banner from '../components/Banner.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <title>Memories | Lincoln East High School Class of 1996</title>
-    <meta name="description" content="View photos and memories from the Lincoln East High School Class of 1996. Share your own memories and reconnect with classmates." />
-  </head>
-  <body>
-    <!-- Particle System Background -->
-    <div id="particles-container" class="particles-container"></div>
-    
-    <Header />
-    <Banner />
+<BaseLayout
+  title="Memories | Lincoln East High School Class of 1996"
+  description="View photos and memories from the Lincoln East High School Class of 1996. Share your own memories and reconnect with classmates."
+>
+  <Header />
+  <Banner />
 
-    <main>
-
-      <section class="memories-page">
-        <div class="container">
+  <main id="main-content">
+    <section class="memories-page ambient-bg">
+      <div class="container">
+        <div class="section-header">
           <h2 class="section-title">MEMORIES</h2>
-          <div class="memories-gallery">
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465127603_9055608791116063_4710872640504337783_n.jpg" alt="Class Memory" data-src="/images/465127603_9055608791116063_4710872640504337783_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
+          <div class="title-accent"></div>
+        </div>
+        <div class="memories-gallery animate-on-scroll stagger">
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465127603_9055608791116063_4710872640504337783_n.jpg" alt="Class of 1996 reunion photo" />
               <div class="overlay">
-                <div class="zoom-icon">🔍</div>
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
               </div>
             </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465438560_9055608814449394_1075421722554769452_n.jpg" alt="Class Memory" data-src="/images/465438560_9055608814449394_1075421722554769452_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465543029_9055609131116029_3663602968941105562_n.jpg" alt="Class Memory" data-src="/images/465543029_9055609131116029_3663602968941105562_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465264510_9055608807782728_6239206708037678016_n.jpg" alt="Class Memory" data-src="/images/465264510_9055608807782728_6239206708037678016_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465070141_9055608801116062_7605442766377908196_n.jpg" alt="Class Memory" data-src="/images/465070141_9055608801116062_7605442766377908196_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465055155_9055609144449361_4123593596248471399_n.jpg" alt="Class Memory" data-src="/images/465055155_9055609144449361_4123593596248471399_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465111878_9055608797782729_7673751147646940858_n.jpg" alt="Class Memory" data-src="/images/465111878_9055608797782729_7673751147646940858_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465448933_9055608811116061_3195572261878764037_n.jpg" alt="Class Memory" data-src="/images/465448933_9055608811116061_3195572261878764037_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465186592_9055609151116027_6360204118983415303_n.jpg" alt="Class Memory" data-src="/images/465186592_9055609151116027_6360204118983415303_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/464949062_9055609161116026_1478321318197612182_n.jpg" alt="Class Memory" data-src="/images/464949062_9055609161116026_1478321318197612182_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465366656_9055609141116028_6934270115417462327_n.jpg" alt="Class Memory" data-src="/images/465366656_9055609141116028_6934270115417462327_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465411351_9055609154449360_284769326469106125_n.jpg" alt="Class Memory" data-src="/images/465411351_9055609154449360_284769326469106125_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465549368_9055609157782693_5839450919543582768_n.jpg" alt="Class Memory" data-src="/images/465549368_9055609157782693_5839450919543582768_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465240110_9055608787782730_41978682562471897_n.jpg" alt="Class Memory" data-src="/images/465240110_9055608787782730_41978682562471897_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/465241126_9055608804449395_4727202403310464972_n.jpg" alt="Class Memory" data-src="/images/465241126_9055608804449395_4727202403310464972_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">2016 Reunion</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/474779326_952042330359989_8718990319472695709_n.jpg" alt="Class Memory" data-src="/images/474779326_952042330359989_8718990319472695709_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">Class memories</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/300972839_411226991108195_3828444108434351779_n.jpg" alt="Class Memory" data-src="/images/300972839_411226991108195_3828444108434351779_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">Class memories</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
-            </div>
-            
-            <div class="memory-card" data-lightbox="gallery">
-              <img src="/images/93796277_3172592099417791_6998345339895808000_n.jpg" alt="Class Memory" data-src="/images/93796277_3172592099417791_6998345339895808000_n.jpg" />
-              <div class="memory-info">
-                <p class="memory-date">Class memories</p>
-                <p class="memory-description">Class memories</p>
-              </div>
-              <div class="overlay">
-                <div class="zoom-icon">🔍</div>
-              </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-    
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-      <div class="lightbox-backdrop"></div>
-      <div class="lightbox-container">
-        <button class="lightbox-close">&times;</button>
-        <button class="lightbox-prev">&#8249;</button>
-        <button class="lightbox-next">&#8250;</button>
-        <div class="lightbox-content">
-          <img id="lightbox-image" src="" alt="" />
-          <div class="lightbox-info">
-            <p id="lightbox-caption"></p>
-            <div class="lightbox-counter">
-              <span id="lightbox-current">1</span> / <span id="lightbox-total">18</span>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465438560_9055608814449394_1075421722554769452_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465543029_9055609131116029_3663602968941105562_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465264510_9055608807782728_6239206708037678016_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465070141_9055608801116062_7605442766377908196_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465055155_9055609144449361_4123593596248471399_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465111878_9055608797782729_7673751147646940858_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465448933_9055608811116061_3195572261878764037_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465186592_9055609151116027_6360204118983415303_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/464949062_9055609161116026_1478321318197612182_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465366656_9055609141116028_6934270115417462327_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465411351_9055609154449360_284769326469106125_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
+            <div class="memory-image-wrapper">
+              <img src="/images/465549368_9055609157782693_5839450919543582768_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">2016 Reunion</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
+            <div class="memory-image-wrapper">
+              <img src="/images/465240110_9055608787782730_41978682562471897_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">Class memories</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
+            <div class="memory-image-wrapper">
+              <img src="/images/465241126_9055608804449395_4727202403310464972_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">Class memories</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
+            <div class="memory-image-wrapper">
+              <img src="/images/474779326_952042330359989_8718990319472695709_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">Class memories</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
+            <div class="memory-image-wrapper">
+              <img src="/images/300972839_411226991108195_3828444108434351779_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">Class memories</p>
+              <p class="memory-description">Class memories</p>
+            </div>
+          </div>
+
+          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
+            <div class="memory-image-wrapper">
+              <img src="/images/93796277_3172592099417791_6998345339895808000_n.jpg" alt="Class of 1996 reunion photo" />
+              <div class="overlay">
+                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+              </div>
+            </div>
+            <div class="memory-info">
+              <p class="memory-date">Class memories</p>
+              <p class="memory-description">Class memories</p>
             </div>
           </div>
         </div>
       </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-container">
+      <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+      <button class="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+      <button class="lightbox-next" aria-label="Next photo">&#8250;</button>
+      <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="" />
+        <div class="lightbox-info">
+          <p id="lightbox-caption"></p>
+          <div class="lightbox-counter" aria-live="polite">
+            <span id="lightbox-current">1</span> / <span id="lightbox-total">18</span>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <Footer />
-    
-    <script>
-      
-      // Smooth page transitions
-      function initPageTransitions() {
-        const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-        
-        links.forEach(link => {
-          link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            
-            // Skip external links and same page
-            if (!href || href.startsWith('http') || href === window.location.pathname) {
-              return;
-            }
-            
-            e.preventDefault();
-            
-            // Add fade out effect
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s ease-out';
-            
-            // Navigate after fade out
-            setTimeout(() => {
-              window.location.href = href;
-            }, 300);
-          });
+  </div>
+
+  <Footer />
+
+  <script>
+    function initLightbox() {
+      const memoryCards = document.querySelectorAll('.memory-card');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxClose = document.querySelector('.lightbox-close');
+      const lightboxPrev = document.querySelector('.lightbox-prev');
+      const lightboxNext = document.querySelector('.lightbox-next');
+      const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
+      const currentCounter = document.getElementById('lightbox-current');
+      const totalCounter = document.getElementById('lightbox-total');
+
+      let currentImageIndex = 0;
+      const images = Array.from(memoryCards).map(card => card.querySelector('img'));
+      if (totalCounter) totalCounter.textContent = images.length;
+
+      function openLightbox(index) {
+        currentImageIndex = index;
+        const img = images[currentImageIndex];
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        if (currentCounter) currentCounter.textContent = currentImageIndex + 1;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lightboxClose?.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        if (lastFocusedCard) lastFocusedCard.focus();
+      }
+
+      function showPrevImage() {
+        currentImageIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+        openLightbox(currentImageIndex);
+      }
+
+      function showNextImage() {
+        currentImageIndex = currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
+        openLightbox(currentImageIndex);
+      }
+
+      let lastFocusedCard = null;
+
+      memoryCards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          lastFocusedCard = card;
+          openLightbox(index);
         });
-      }
-      
-      // Page fade in effect
-      function fadeInPage() {
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.3s ease-in';
-        setTimeout(() => {
-          document.body.style.opacity = '1';
-        }, 50);
-      }
-      
-      // Lightbox functionality
-      function initLightbox() {
-        const memoryCards = document.querySelectorAll('.memory-card');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        const lightboxPrev = document.querySelector('.lightbox-prev');
-        const lightboxNext = document.querySelector('.lightbox-next');
-        const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
-        const currentCounter = document.getElementById('lightbox-current');
-        const totalCounter = document.getElementById('lightbox-total');
-        
-        let currentImageIndex = 0;
-        
-        // Get all images from memory cards
-        const images = Array.from(memoryCards).map(card => card.querySelector('img'));
-        
-        // Update total counter
-        if (totalCounter) totalCounter.textContent = images.length;
-        
-        function openLightbox(index) {
-          currentImageIndex = index;
-          const img = images[currentImageIndex];
-          lightboxImage.src = img.src;
-          lightboxImage.alt = img.alt;
-          if (currentCounter) currentCounter.textContent = currentImageIndex + 1;
-          lightbox.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
-        
-        function closeLightbox() {
-          lightbox.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-        
-        function showPrevImage() {
-          currentImageIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
-          openLightbox(currentImageIndex);
-        }
-        
-        function showNextImage() {
-          currentImageIndex = currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
-          openLightbox(currentImageIndex);
-        }
-        
-        // Event listeners - attach to the entire memory card
-        memoryCards.forEach((card, index) => {
-          card.addEventListener('click', (e) => {
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
+            lastFocusedCard = card;
             openLightbox(index);
-          });
-        });
-        
-        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
-        if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
-        if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-          if (!lightbox.classList.contains('active')) return;
-          
-          switch(e.key) {
-            case 'Escape':
-              closeLightbox();
-              break;
-            case 'ArrowLeft':
-              showPrevImage();
-              break;
-            case 'ArrowRight':
-              showNextImage();
-              break;
           }
         });
-        
-        // Touch/swipe support
-        let startX = 0;
-        let endX = 0;
-        
-        lightbox.addEventListener('touchstart', (e) => {
-          startX = e.touches[0].clientX;
-        });
-        
-        lightbox.addEventListener('touchend', (e) => {
-          endX = e.changedTouches[0].clientX;
-          const diff = startX - endX;
-          
-          if (Math.abs(diff) > 50) { // Minimum swipe distance
-            if (diff > 0) {
-              showNextImage(); // Swipe left = next
-            } else {
-              showPrevImage(); // Swipe right = previous
-            }
-          }
-        });
-      }
-      
-      // Particle System
-      function createParticleSystem() {
-        const container = document.getElementById('particles-container');
-        if (!container) return;
-        
-        const colors = [
-          '#1e40af',  // Primary blue
-          '#3b82f6',  // Lighter blue  
-          '#60a5fa',  // Even lighter blue
-          '#93c5fd',  // Light blue
-          '#dbeafe',  // Very light blue
-          '#ffffff',  // White
-          'rgba(255, 255, 255, 0.8)', // Semi-transparent white
-          'rgba(30, 64, 175, 0.6)',   // Semi-transparent blue
-        ];
-        
-        const shapes = ['circle', 'square', 'triangle'];
-        const animations = ['float-up', 'float-diagonal', 'float-zigzag'];
-        
-        function createParticle() {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          
-          // Random shape
-          const shape = shapes[Math.floor(Math.random() * shapes.length)];
-          particle.classList.add(shape);
-          
-          // Random size
-          const size = Math.random() * 8 + 2; // 2-10px
-          if (shape !== 'triangle') {
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-          }
-          
-          // Random color
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          if (shape === 'triangle') {
-            particle.style.borderBottomColor = color;
-          } else {
-            particle.style.backgroundColor = color;
-          }
-          
-          // Random position
-          particle.style.left = Math.random() * 100 + '%';
-          
-          // Random animation
-          const animation = animations[Math.floor(Math.random() * animations.length)];
-          particle.style.animation = `${animation} ${Math.random() * 10 + 5}s linear infinite`;
-          
-          // Random delay
-          particle.style.animationDelay = Math.random() * 5 + 's';
-          
-          container.appendChild(particle);
-          
-          // Remove particle after animation completes
-          setTimeout(() => {
-            if (container && container.contains(particle)) {
-              container.removeChild(particle);
-            }
-          }, 15000);
-        }
-        
-        // Create initial particles
-        for (let i = 0; i < 15; i++) {
-          setTimeout(() => createParticle(), Math.random() * 5000);
-        }
-        
-        // Continue creating particles
-        setInterval(() => {
-          if (Math.random() > 0.7) { // 30% chance each interval
-            createParticle();
-          }
-        }, 1000);
-      }
-      
-      // Initialize effects when page loads
-      document.addEventListener('DOMContentLoaded', () => {
-        // Fade in page
-        fadeInPage();
-        
-        // Initialize transitions
-        initPageTransitions();
-        
-        // Initialize lightbox
-        initLightbox();
-        
-        // Start particle system
-        createParticleSystem();
       });
-    </script>
-  </body>
-</html>
+
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+      if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+      if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        switch(e.key) {
+          case 'Escape': closeLightbox(); break;
+          case 'ArrowLeft': showPrevImage(); break;
+          case 'ArrowRight': showNextImage(); break;
+        }
+      });
+
+      let startX = 0;
+      lightbox.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+      lightbox.addEventListener('touchend', (e) => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? showNextImage() : showPrevImage();
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initLightbox);
+  </script>
+</BaseLayout>
 
 <style>
-  html {
-    font-family: system-ui, sans-serif;
-    overflow-x: hidden;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    min-width: 320px;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  /* Particle System */
-  .particles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-  }
-  
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    animation: float-up linear infinite;
-  }
-  
-  .particle.circle {
-    border-radius: 50%;
-  }
-  
-  .particle.square {
-    border-radius: 2px;
-  }
-  
-  .particle.triangle {
-    width: 0 !important;
-    height: 0 !important;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 8px solid;
-    border-radius: 0;
-  }
-  
-  @keyframes float-up {
-    0% {
-      transform: translateY(100vh) rotate(0deg) scale(0);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-100px) rotate(360deg) scale(1);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes float-diagonal {
-    0% {
-      transform: translate(0, 100vh) rotate(0deg) scale(0);
-      opacity: 0;
-    }
-    10% {
-      opacity: 0.8;
-    }
-    90% {
-      opacity: 0.8;
-    }
-    100% {
-      transform: translate(200px, -100px) rotate(360deg) scale(1);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes float-zigzag {
-    0% {
-      transform: translate(0, 100vh) rotate(0deg);
-      opacity: 0;
-    }
-    25% {
-      transform: translate(100px, 75vh) rotate(90deg);
-      opacity: 1;
-    }
-    50% {
-      transform: translate(-50px, 50vh) rotate(180deg);
-      opacity: 1;
-    }
-    75% {
-      transform: translate(75px, 25vh) rotate(270deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(0, -100px) rotate(360deg);
-      opacity: 0;
-    }
-  }
-
   .memories-page {
-    padding: 80px 0;
-    background: rgba(30, 64, 175, 0.8);
+    padding: var(--section-padding) 0;
+    background: var(--gradient-primary);
     min-height: 80vh;
   }
-  
+
+  .memories-page::before {
+    z-index: 0;
+  }
+
   .container {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
   }
 
   .section-title {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-display);
     font-size: 48px;
-    font-weight: 100;
+    font-weight: 600;
     color: white;
-    text-align: center;
-    margin: 0 0 60px 0;
+    margin: 0 0 16px 0;
     text-transform: uppercase;
-    letter-spacing: 8px;
+    letter-spacing: 4px;
   }
 
-  .page-title {
-    font-family: 'Roboto', sans-serif;
-    font-size: 48px;
-    font-weight: 100;
-    color: #1e40af;
-    text-align: center;
-    margin: 0 0 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  .title-accent {
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-card-border);
+    margin: 0 auto;
+    border-radius: 2px;
   }
-  
-  .page-subtitle {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    color: #666;
-    text-align: center;
-    margin: 0 0 60px 0;
-  }
-  
+
   .memories-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
+    gap: 24px;
     margin-bottom: 40px;
   }
-  
+
   .memory-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
     cursor: pointer;
     position: relative;
   }
-  
-  .memory-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+
+  .memory-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    background: var(--gradient-card-border);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-medium);
   }
-  
-  .memory-card:hover .overlay {
+
+  .memory-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .memory-card:hover::before {
     opacity: 1;
   }
-  
+
+  .memory-card:hover .overlay,
+  .memory-card:focus-visible .overlay {
+    opacity: 1;
+  }
+
+  .memory-card:focus-visible {
+    outline: 3px solid var(--color-electric-light);
+    outline-offset: 2px;
+  }
+
+  .memory-image-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
   .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(30, 64, 175, 0.8);
+    background: rgba(30, 42, 120, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-medium);
     pointer-events: none;
   }
-  
+
   .zoom-icon {
-    font-size: 2rem;
-    color: white;
-    animation: pulse 2s infinite;
+    background: rgba(30, 42, 120, 0.7);
+    border-radius: 50%;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
   }
-  
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-  
+
   .memory-card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    display: block;
   }
-  
+
   .memory-info {
     padding: 20px;
   }
-  
+
   .memory-date {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-display);
     font-size: 14px;
-    font-weight: 500;
-    color: #1e40af;
+    font-weight: 600;
+    color: var(--color-primary-700);
     margin: 0 0 8px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-  
+
   .memory-description {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 16px;
-    color: #666;
+    color: var(--color-gray-500);
     margin: 0;
     line-height: 1.5;
   }
-  
-  /* Lightbox Styles */
+
+  /* Lightbox */
   .lightbox {
     display: none;
     position: fixed;
@@ -725,20 +523,18 @@ import Footer from '../components/Footer.astro';
     height: 100%;
     z-index: 1000;
   }
-  
-  .lightbox.active {
-    display: block;
-  }
-  
+
+  .lightbox.active { display: block; }
+
   .lightbox-backdrop {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(15, 23, 42, 0.95);
   }
-  
+
   .lightbox-container {
     position: relative;
     width: 100%;
@@ -748,20 +544,20 @@ import Footer from '../components/Footer.astro';
     justify-content: center;
     padding: 20px;
   }
-  
+
   .lightbox-content {
     max-width: 90vw;
     max-height: 90vh;
     position: relative;
   }
-  
+
   .lightbox-content img {
     max-width: 100%;
     max-height: 80vh;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 12px;
   }
-  
+
   .lightbox-close {
     position: absolute;
     top: 20px;
@@ -772,8 +568,12 @@ import Footer from '../components/Footer.astro';
     border: none;
     cursor: pointer;
     z-index: 1001;
+    transition: transform var(--transition-fast);
   }
-  
+
+  .lightbox-close:hover { transform: scale(1.2); }
+  .lightbox-close:focus-visible { outline: 2px solid var(--color-electric-light); outline-offset: 4px; }
+
   .lightbox-prev, .lightbox-next {
     position: absolute;
     top: 50%;
@@ -785,37 +585,39 @@ import Footer from '../components/Footer.astro';
     cursor: pointer;
     z-index: 1001;
     padding: 20px;
+    transition: transform var(--transition-fast);
   }
-  
-  .lightbox-prev {
-    left: 20px;
+
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  .lightbox-prev:hover { transform: translateY(-50%) scale(1.2); }
+  .lightbox-next:hover { transform: translateY(-50%) scale(1.2); }
+  .lightbox-prev:focus-visible,
+  .lightbox-next:focus-visible { outline: 2px solid var(--color-electric-light); outline-offset: 4px; }
+
+  .lightbox-info {
+    text-align: center;
+    color: white;
+    margin-top: 12px;
+    font-family: var(--font-body);
   }
-  
-  .lightbox-next {
-    right: 20px;
-  }
-  
-  /* Large monitors */
-  @media (min-width: 1920px) {
+
+  .lightbox-counter {
+    font-size: 14px;
+    opacity: 0.7;
   }
 
   @media (max-width: 768px) {
+    .memories-page { padding: var(--section-padding-mobile) 0; }
+    .section-title { font-size: 36px; }
     .memories-gallery {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    
-    .upload-section {
-      padding: 40px 20px;
+      gap: 16px;
     }
   }
-  
+
   @media (max-width: 480px) {
-  }
-
-  @media (max-width: 390px) {
-  }
-
-  @media (max-width: 320px) {
+    .memories-page { padding: 40px 0; }
+    .section-title { font-size: 28px; }
   }
 </style>

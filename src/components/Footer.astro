@@ -1,15 +1,16 @@
 ---
-// Footer component
+// Footer component - modernized with dark charcoal and gradient accent
 ---
 
 <footer class="footer">
+  <div class="footer-accent"></div>
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
         <h3>Lincoln East Class of '96</h3>
-        <p>30th Reunion • September 5-6, 2026 • Labor Day Weekend</p>
+        <p>30th Reunion &bull; September 5-6, 2026 &bull; Labor Day Weekend</p>
       </div>
-      
+
       <div class="footer-links">
         <div class="footer-section">
           <h4>Events</h4>
@@ -19,7 +20,7 @@
             <li><a href="/events">Sunday Social</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-section">
           <h4>Quick Links</h4>
           <ul>
@@ -28,28 +29,28 @@
             <li><a href="/rsvp">RSVP</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-section">
           <h4>Connect</h4>
           <ul>
-            <li><a href="https://www.facebook.com/LincolnEastHighSchoolClassof1996" target="_blank">Facebook Page</a></li>
+            <li><a href="https://www.facebook.com/LincolnEastHighSchoolClassof1996" target="_blank" rel="noopener noreferrer">Facebook Page</a></li>
             <li><a href="mailto:lincolneast1996@gmail.com">lincolneast1996@gmail.com</a></li>
           </ul>
         </div>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <div class="footer-locations">
         <p><strong>LINCOLN EAST HIGH SCHOOL</strong><br>
         1000 S 70th St, Lincoln, NE 68510</p>
       </div>
-      
+
       <div class="footer-contact">
         <p><strong>SEPTEMBER 5-6, 2026</strong><br>
         Labor Day Weekend</p>
       </div>
-      
+
       <div class="footer-copyright">
         <p>&copy; 2026 Lincoln East Class of 1996 | All rights reserved</p>
       </div>
@@ -59,208 +60,161 @@
 
 <style>
   .footer {
-    background: #1e40af;
+    background: var(--color-gray-900);
     color: white;
     padding: 60px 0 64px;
     margin-top: 0;
+    position: relative;
   }
-  
+
+  .footer-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-card-border);
+  }
+
   .container {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 20px;
   }
-  
+
   .footer-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 60px;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
   }
-  
+
   .footer-brand h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-display);
     font-size: 28px;
     margin-bottom: 15px;
-    font-weight: 500;
+    font-weight: 600;
   }
-  
+
   .footer-brand p {
-    font-family: 'Roboto', sans-serif;
-    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     font-size: 16px;
     font-weight: 300;
   }
-  
+
   .footer-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
   }
-  
+
   .footer-section h4 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-family: var(--font-display);
+    font-size: 16px;
     margin-bottom: 20px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.9);
   }
-  
+
   .footer-section ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  
+
   .footer-section li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
-  
+
   .footer-section a {
-    font-family: 'Roboto', sans-serif;
-    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
     font-size: 14px;
-    font-weight: 300;
-    transition: color 0.3s ease;
+    font-weight: 400;
+    transition: color var(--transition-fast);
+    position: relative;
   }
-  
+
   .footer-section a:hover {
-    color: white;
-    text-decoration: underline;
+    color: var(--color-electric-light);
   }
-  
+
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
     align-items: start;
   }
-  
+
   .footer-locations p,
   .footer-contact p {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 14px;
     line-height: 1.6;
     margin: 0;
-    font-weight: 300;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
   }
-  
+
+  .footer-locations strong,
+  .footer-contact strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+  }
+
   .footer-copyright {
     text-align: right;
   }
-  
+
   .footer-copyright p {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 10px;
-    font-weight: 300;
+    font-weight: 400;
   }
-  
-  /* Large monitors */
+
   @media (min-width: 1920px) {
-    .container {
-      max-width: 1600px;
-    }
-    
-    .footer-brand h3 {
-      font-size: 32px;
-    }
-    
-    .footer-brand p {
-      font-size: 18px;
-    }
-    
-    .footer-section h4 {
-      font-size: 20px;
-    }
-    
-    .footer-section a {
-      font-size: 16px;
-    }
-    
+    .container { max-width: 1600px; }
+    .footer-brand h3 { font-size: 32px; }
+    .footer-brand p { font-size: 18px; }
+    .footer-section h4 { font-size: 18px; }
+    .footer-section a { font-size: 16px; }
     .footer-locations p,
-    .footer-contact p {
-      font-size: 16px;
-    }
+    .footer-contact p { font-size: 16px; }
   }
-  
-  /* Ultra-wide monitors */
+
   @media (min-width: 2560px) {
-    .container {
-      max-width: 2000px;
-    }
+    .container { max-width: 2000px; }
   }
-  
-  /* Tablet */
+
   @media (max-width: 1024px) {
-    .footer-links {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .footer-links { grid-template-columns: repeat(2, 1fr); }
   }
-  
-  /* Mobile */
+
   @media (max-width: 768px) {
-    .footer {
-      padding: 40px 0;
-    }
-    
-    .footer-content {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    
-    .footer-brand h3 {
-      font-size: 24px;
-    }
-    
-    .footer-links {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-    
-    .footer-bottom {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      text-align: center;
-    }
-    
-    .footer-copyright {
-      text-align: center;
-    }
+    .footer { padding: 40px 0; }
+    .footer-content { grid-template-columns: 1fr; gap: 40px; }
+    .footer-brand h3 { font-size: 24px; }
+    .footer-links { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+    .footer-copyright { text-align: center; }
   }
-  
+
   @media (max-width: 480px) {
-    .footer {
-      padding: 30px 0;
-    }
-    
-    .footer-brand h3 {
-      font-size: 20px;
-    }
-    
-    .footer-brand p {
-      font-size: 14px;
-    }
-    
-    .footer-section h4 {
-      font-size: 16px;
-    }
-    
-    .footer-section a {
-      font-size: 13px;
-    }
-    
+    .footer { padding: 30px 0; }
+    .footer-brand h3 { font-size: 20px; }
+    .footer-brand p { font-size: 14px; }
+    .footer-section h4 { font-size: 15px; }
+    .footer-section a { font-size: 13px; }
     .footer-locations p,
-    .footer-contact p {
-      font-size: 13px;
-    }
-    
-    .footer-copyright p {
-      font-size: 11px;
-    }
+    .footer-contact p { font-size: 13px; }
+    .footer-copyright p { font-size: 11px; }
   }
 </style>

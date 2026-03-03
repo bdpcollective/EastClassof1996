@@ -1,5 +1,5 @@
 ---
-// Banner component for reunion branding
+// Banner component - modernized with gradient and texture
 ---
 
 <div class="banner">
@@ -20,18 +20,31 @@
 
 <style>
   .banner {
-    background: #1e40af;
+    background: var(--gradient-primary);
     color: white;
-    padding: 32px 0;
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 60px);
+    pointer-events: none;
   }
 
   .banner .container {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .banner-section {
@@ -41,12 +54,12 @@
 
   .banner-left {
     flex: 0.5;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .banner-center {
     flex: 3;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .banner-right {
@@ -55,139 +68,60 @@
 
   .banner-section p {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
-    letter-spacing: 0.5px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 1px;
   }
 
   .banner-left p {
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   .banner-right p {
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   .class-year {
-    font-family: 'Noto Serif', serif;
-    font-size: 84px;
-    font-weight: 400;
+    font-family: var(--font-accent);
+    font-size: clamp(24px, 8vw, 84px);
+    font-weight: 700;
     line-height: 1;
-  }
-
-  .glow-text {
     text-shadow:
-      0 0 5px rgba(255, 255, 255, 0.8),
-      0 0 10px rgba(255, 255, 255, 0.6),
-      0 0 15px rgba(30, 64, 175, 0.4),
-      0 0 20px rgba(30, 64, 175, 0.3);
-    animation: glow-pulse 3s ease-in-out infinite alternate;
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 0 40px rgba(6, 182, 212, 0.2);
   }
 
-  @keyframes glow-pulse {
-    from {
-      text-shadow:
-        0 0 5px rgba(255, 255, 255, 0.8),
-        0 0 10px rgba(255, 255, 255, 0.6),
-        0 0 15px rgba(30, 64, 175, 0.4),
-        0 0 20px rgba(30, 64, 175, 0.3);
-    }
-    to {
-      text-shadow:
-        0 0 8px rgba(255, 255, 255, 1),
-        0 0 16px rgba(255, 255, 255, 0.8),
-        0 0 24px rgba(30, 64, 175, 0.6),
-        0 0 32px rgba(30, 64, 175, 0.4);
-    }
-  }
-
-  /* Large monitors */
   @media (min-width: 1920px) {
-    .banner .container {
-      max-width: 1600px;
-    }
-
-    .class-year {
-      font-size: 96px;
-    }
+    .banner .container { max-width: 1600px; }
+    .class-year { font-size: 96px; }
   }
 
-  /* Tablet */
-  @media (max-width: 1024px) {
-    .class-year {
-      font-size: 64px;
-    }
-  }
-
-  /* Mobile styles */
   @media (max-width: 768px) {
-    .class-year {
-      font-size: 36px;
-    }
-
-    .banner-section {
-      padding: 0 16px;
-    }
-
+    .banner { padding: 24px 0; }
+    .banner-section { padding: 0 16px; }
     .banner-left p,
-    .banner-right p {
-      font-size: 14px;
-    }
+    .banner-right p { font-size: 14px; }
   }
 
   @media (max-width: 480px) {
-    .banner {
-      padding: 15px 0;
-    }
-
-    .class-year {
-      font-size: 22px;
-    }
-
-    .banner-section {
-      padding: 0 3px;
-    }
-
+    .banner { padding: 16px 0; }
+    .banner-section { padding: 0 6px; }
     .banner-left p,
-    .banner-right p {
-      font-size: 9px;
-      line-height: 1.1;
-    }
+    .banner-right p { font-size: 9px; line-height: 1.1; }
   }
 
   @media (max-width: 390px) {
-    .class-year {
-      font-size: 20px;
-    }
-
     .banner-left p,
-    .banner-right p {
-      font-size: 8px;
-    }
-
-    .banner-section {
-      padding: 0 2px;
-    }
+    .banner-right p { font-size: 8px; }
+    .banner-section { padding: 0 3px; }
   }
 
   @media (max-width: 320px) {
-    .banner {
-      padding: 12px 0;
-    }
-
-    .class-year {
-      font-size: 18px;
-    }
-
+    .banner { padding: 12px 0; }
     .banner-left p,
-    .banner-right p {
-      font-size: 7px;
-    }
-
-    .banner-section {
-      padding: 0 1px;
-    }
+    .banner-right p { font-size: 7px; }
+    .banner-section { padding: 0 2px; }
   }
 </style>

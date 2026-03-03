@@ -1,11 +1,14 @@
 ---
-// Reunion Events component
+// Reunion Events component - modernized
 ---
 
-<section class="reunion-events">
+<section class="reunion-events ambient-bg">
   <div class="container">
-    <h2 class="section-title">REUNION EVENTS</h2>
-    <div class="events-grid">
+    <div class="section-header">
+      <h2 class="section-title">REUNION EVENTS</h2>
+      <div class="title-accent"></div>
+    </div>
+    <div class="events-grid animate-on-scroll stagger">
       <div class="event-card">
         <div class="event-date">
           <span class="day">5</span>
@@ -13,13 +16,19 @@
         </div>
         <div class="event-details">
           <h3>School Tour</h3>
-          <p class="time">8:00 AM - 10:00 AM</p>
-          <p class="location">Lincoln East High School</p>
+          <p class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            8:00 AM - 10:00 AM
+          </p>
+          <p class="location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Lincoln East High School
+          </p>
           <p class="address">1000 S 70th St, Lincoln, NE 68510</p>
           <p class="description">Take a nostalgic walk through the halls of Lincoln East and see how things have changed. Coffee and donuts will be provided.</p>
         </div>
       </div>
-      
+
       <div class="event-card">
         <div class="event-date">
           <span class="day">6</span>
@@ -27,8 +36,14 @@
         </div>
         <div class="event-details">
           <h3>Sunday Social</h3>
-          <p class="time">7:00 PM - 10:00 PM</p>
-          <p class="location">Location TBD</p>
+          <p class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            7:00 PM - 10:00 PM
+          </p>
+          <p class="location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Location TBD
+          </p>
           <p class="address">Address TBD</p>
           <p class="description">Join us for a casual social gathering to reconnect with classmates.</p>
         </div>
@@ -42,242 +57,188 @@
 
 <style>
   .reunion-events {
-    padding: 80px 0;
-    background: rgba(30,64,175,0.8);
+    padding: var(--section-padding) 0;
+    background: var(--gradient-primary);
   }
-  
+
+  .reunion-events::before {
+    z-index: 0;
+  }
+
   .container {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
   }
-  
-  .section-title {
-    font-family: 'Roboto', sans-serif;
-    font-size: 48px;
-    font-weight: 100;
-    color: white;
+
+  .section-header {
     text-align: center;
-    margin: 0 0 60px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    margin-bottom: 60px;
   }
-  
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .title-accent {
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-card-border);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
   .events-grid {
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
-  
+
   .event-card {
     background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 32px;
     display: flex;
     gap: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    position: relative;
   }
 
   .event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .event-card.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .event-card.disabled:hover {
-    transform: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  }
-
-  .event-card.disabled .event-date {
-    background: #9ca3af;
-  }
-
-  .event-card.disabled .event-details h3 {
-    color: #9ca3af;
-  }
-  
   .event-date {
-    background: #1e40af;
+    background: var(--gradient-primary);
     color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 20px;
     text-align: center;
     min-width: 80px;
     height: fit-content;
+    flex-shrink: 0;
   }
-  
+
   .event-date .day {
     display: block;
+    font-family: var(--font-display);
     font-size: 36px;
     font-weight: 700;
     line-height: 1;
   }
-  
+
   .event-date .month {
     display: block;
+    font-family: var(--font-display);
     font-size: 14px;
     font-weight: 500;
     margin-top: 5px;
     letter-spacing: 1px;
   }
-  
+
   .event-details h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-display);
     font-size: 24px;
-    font-weight: 400;
-    color: #1e40af;
-    margin: 0 0 10px 0;
+    font-weight: 600;
+    color: var(--color-primary-700);
+    margin: 0 0 12px 0;
   }
-  
-  .event-details .time {
-    font-family: 'Roboto', sans-serif;
+
+  .event-details .time,
+  .event-details .location {
+    font-family: var(--font-body);
     font-size: 14px;
-    color: #666;
+    color: var(--color-gray-500);
     margin: 0 0 5px 0;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
-  
-  .event-details .location {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    color: #999;
-    margin: 0 0 5px 0;
-    font-style: italic;
+
+  .event-details .time svg,
+  .event-details .location svg {
+    flex-shrink: 0;
+    color: var(--color-electric);
   }
-  
+
   .event-details .address {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 13px;
-    color: #999;
+    color: var(--color-gray-500);
     margin: 0 0 15px 0;
+    padding-left: 20px;
   }
-  
+
   .event-details .description {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 16px;
-    color: #666;
+    color: var(--color-gray-500);
     line-height: 1.6;
     margin: 0;
   }
-  
+
   .rsvp-button-container {
     text-align: center;
     margin-top: 60px;
   }
-  
+
   .rsvp-button {
     display: inline-block;
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
+    background: white;
+    color: var(--color-primary-700);
     padding: 16px 48px;
-    border-radius: 30px;
+    border-radius: 12px;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-display);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all var(--transition-medium);
   }
 
   .rsvp-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
-  
-  /* Large monitors */
+
   @media (min-width: 1920px) {
-    .container {
-      max-width: 1600px;
-    }
-    
-    .section-title {
-      font-size: 56px;
-    }
-    
-    .event-card {
-      padding: 40px;
-    }
-    
-    .event-details h3 {
-      font-size: 28px;
-    }
-    
-    .event-details .description {
-      font-size: 18px;
-    }
+    .container { max-width: 1600px; }
+    .section-title { font-size: 56px; }
+    .event-card { padding: 40px; }
+    .event-details h3 { font-size: 28px; }
+    .event-details .description { font-size: 18px; }
   }
-  
-  /* Mobile styles */
+
   @media (max-width: 768px) {
-    .reunion-events {
-      padding: 60px 0;
-    }
-    
-    .section-title {
-      font-size: 36px;
-      margin: 0 0 40px 0;
-    }
-    
-    .events-grid {
-      gap: 30px;
-    }
-    
-    .event-card {
-      flex-direction: column;
-      padding: 20px;
-    }
-    
-    .event-date {
-      width: 100%;
-      max-width: 120px;
-      margin: 0 auto 20px auto;
-    }
-    
-    .event-details {
-      text-align: center;
-    }
-    
-    .rsvp-button {
-      font-size: 16px;
-      padding: 14px 40px;
-    }
+    .reunion-events { padding: var(--section-padding-mobile) 0; }
+    .section-title { font-size: 36px; }
+    .events-grid { gap: 30px; }
+    .event-card { flex-direction: column; padding: 24px; }
+    .event-date { width: 100%; max-width: 120px; margin: 0 auto 20px auto; }
+    .event-details { text-align: center; }
+    .event-details .time,
+    .event-details .location { justify-content: center; }
+    .event-details .address { padding-left: 0; }
+    .rsvp-button { font-size: 16px; padding: 14px 40px; }
   }
-  
+
   @media (max-width: 480px) {
-    .reunion-events {
-      padding: 40px 0;
-    }
-    
-    .section-title {
-      font-size: 28px;
-      margin: 0 0 30px 0;
-    }
-    
-    .event-card {
-      padding: 15px;
-    }
-    
-    .event-date {
-      padding: 15px;
-    }
-    
-    .event-date .day {
-      font-size: 28px;
-    }
-    
-    .event-details h3 {
-      font-size: 20px;
-    }
-    
-    .event-details .description {
-      font-size: 14px;
-    }
+    .reunion-events { padding: 40px 0; }
+    .section-title { font-size: 28px; margin: 0 0 12px 0; }
+    .event-card { padding: 16px; }
+    .event-date { padding: 15px; }
+    .event-date .day { font-size: 28px; }
+    .event-details h3 { font-size: 20px; }
+    .event-details .description { font-size: 14px; }
   }
 </style>

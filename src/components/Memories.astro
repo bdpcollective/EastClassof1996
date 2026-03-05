@@ -60,10 +60,12 @@
 
   .memories-grid {
     display: grid;
-    grid-template-columns: repeat(4, 200px);
-    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     margin-bottom: 60px;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .memory-item {
@@ -131,11 +133,6 @@
 
   @media (min-width: 1920px) {
     .section-title { font-size: 56px; }
-    .memories-grid { grid-template-columns: repeat(5, 200px); gap: 28px; }
-  }
-
-  @media (min-width: 2560px) {
-    .memories-grid { grid-template-columns: repeat(6, 200px); }
   }
 
   @media (max-width: 1024px) {

@@ -76,7 +76,7 @@ import Footer from '../components/Footer.astro';
                   <input type="checkbox" id="socialEvent" name="events" value="Social Event">
                   <label for="socialEvent">
                     <span class="checkbox-custom"></span>
-                    Sunday Social (Sunday, Sept 6, 7:00 PM) - price TBD
+                    Sunday Social | South Apothecary Loft (Sunday, Sept 6, 7:00 PM) - price TBD
                   </label>
                 </div>
               </div>
@@ -424,10 +424,10 @@ import Footer from '../components/Footer.astro';
   .submit-btn {
     background: var(--gradient-primary);
     color: white;
-    border: none;
-    padding: 16px 48px;
+    border: 2px solid transparent;
+    padding: 16px 32px;
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
@@ -436,6 +436,7 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
   }
 
   .submit-btn:hover {

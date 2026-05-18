@@ -1,0 +1,625 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Banner from '../components/Banner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Register | Lincoln East High School Class of 1996"
+  description="Register and pay for the Lincoln East High School Class of 1996 30th Reunion. Secure your spot for this memorable celebration!"
+>
+  <Header />
+  <Banner />
+
+  <main id="main-content">
+    <section class="rsvp-page ambient-bg">
+      <div class="container">
+        <div class="rsvp-header animate-on-scroll">
+          <h1>Register &amp; Pay</h1>
+          <p class="rsvp-subtitle">Sign up for the reunion and complete your payment via Venmo</p>
+          <div class="event-details">
+            <div class="detail-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Saturday &amp; Sunday, September 5-6, 2026</span>
+            </div>
+            <div class="detail-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Lincoln, Nebraska</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rsvp-form-container">
+          <form id="registerForm" class="rsvp-form">
+            <div class="form-section">
+              <h2>Personal Information</h2>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}|\([0-9]{3}\) [0-9]{3}-[0-9]{4}|[0-9]{10}" title="Please enter a valid phone number (e.g., 555-123-4567)" placeholder="555-123-4567">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="maidenName">Maiden Name (if applicable)</label>
+                <input type="text" id="maidenName" name="maidenName">
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Event Attendance</h2>
+              <div class="event-checkboxes">
+                <div class="checkbox-group">
+                  <input type="checkbox" id="schoolTour" name="events" value="School Tour">
+                  <label for="schoolTour">
+                    <span class="checkbox-custom"></span>
+                    School Tour (Saturday, Sept 5, 8:00 AM) - Free
+                  </label>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="socialEvent" name="events" value="Social Event">
+                  <label for="socialEvent">
+                    <span class="checkbox-custom"></span>
+                    Sunday Social | South Apothecary Loft (Sunday, Sept 6, 7:00 PM) - $35/person or $60/couple
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Guest Information</h2>
+              <div class="form-group">
+                <label for="guestCount">Number of guests for the Sunday Social</label>
+                <select id="guestCount" name="guestCount">
+                  <option value="0">Just me</option>
+                  <option value="1">Me and a guest</option>
+                  <option value="2">Me and two guests</option>
+                  <option value="3">Me and three guests</option>
+                  <option value="4">Me and four guests</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="guestNames">Guest Names</label>
+                <textarea id="guestNames" name="guestNames" placeholder="Please list the names of your guests..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Additional Information</h2>
+              <div class="form-group">
+                <label for="dietaryRestrictions">Dietary Restrictions or Special Needs</label>
+                <textarea id="dietaryRestrictions" name="dietaryRestrictions" placeholder="Any allergies, dietary restrictions, or accessibility needs..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="comments">Comments or Messages</label>
+                <textarea id="comments" name="comments" placeholder="Share any memories, excitement, or special requests..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section venmo-section">
+              <h2>Payment</h2>
+              <div class="school-photo">
+                <img src="/images/lincoln-east-high-school-lincoln-ne-3-schoolphoto.avif" alt="Lincoln East High School" loading="lazy">
+              </div>
+              <p class="venmo-note">After submitting the form below, please complete your payment via Venmo. Early bird pricing: <strong>$35 per person</strong> or <strong>$60 per couple</strong>.</p>
+              <p class="venmo-note"><strong>Important:</strong> Include your first and last name in the Venmo memo so we can match your payment to your registration.</p>
+              <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
+                Pay with Venmo
+              </a>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <span class="btn-text">Submit Registration</span>
+                <span class="btn-loading">Submitting...</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Message -->
+          <div id="successMessage" class="success-message" role="alert" aria-live="assertive">
+            <div class="success-content">
+              <div class="success-icon">&#10003;</div>
+              <h2>Registration Submitted!</h2>
+              <p>Thank you for registering for our 30th reunion. Don't forget to complete your payment via Venmo!</p>
+              <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
+                Pay with Venmo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzcqKrx8njSlXDUXYSrYIXWfJsAMnJhy-HHlxCtkzzGUTi_NCL_RlV06a1HYJl3peDw-w/exec';
+
+    function submitToGoogleSheets(formData) {
+      return fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData)
+      });
+    }
+
+    function initRegisterForm() {
+      const form = document.getElementById('registerForm');
+      const submitBtn = form.querySelector('.submit-btn');
+      const successMessage = document.getElementById('successMessage');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.classList.add('loading');
+
+        const formData = new FormData(form);
+        const events = [];
+        formData.getAll('events').forEach(event => events.push(event));
+
+        const data = {
+          firstName: formData.get('firstName'),
+          lastName: formData.get('lastName'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          maidenName: formData.get('maidenName'),
+          events: events.join(', '),
+          guestCount: formData.get('guestCount'),
+          guestNames: formData.get('guestNames'),
+          dietaryRestrictions: formData.get('dietaryRestrictions'),
+          comments: formData.get('comments'),
+          source: 'register',
+          timestamp: new Date().toLocaleString()
+        };
+
+        try {
+          await submitToGoogleSheets(data);
+          form.style.display = 'none';
+          successMessage.classList.add('active');
+          createConfetti();
+        } catch (error) {
+          console.error('Error submitting registration:', error);
+          alert('There was an error submitting your registration. Please try again.');
+        } finally {
+          submitBtn.classList.remove('loading');
+        }
+      });
+    }
+
+    function createConfetti() {
+      const colors = ['#1e2a78', '#3b82f6', '#06b6d4', '#93c5fd', '#bfdbfe', '#ffffff'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initRegisterForm);
+  </script>
+</BaseLayout>
+
+<style>
+  .rsvp-page {
+    padding: var(--section-padding) 0;
+    background: var(--gradient-primary);
+    min-height: 80vh;
+  }
+
+  .rsvp-page::before {
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rsvp-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .rsvp-header h1 {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .rsvp-subtitle {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 40px 0;
+  }
+
+  .event-details {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    color: white;
+    font-weight: 500;
+  }
+
+  .detail-item svg {
+    color: var(--color-electric-light);
+  }
+
+  .rsvp-form-container {
+    position: relative;
+    z-index: 10;
+  }
+
+  .rsvp-form {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+  }
+
+  .form-section {
+    margin-bottom: 40px;
+  }
+
+  .form-section h2 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-primary-700);
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid var(--color-gray-100);
+    padding-bottom: 10px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .form-group {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--color-gray-700);
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    transition: all var(--transition-fast);
+    color: var(--color-gray-700);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-electric);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .event-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .checkbox-group {
+    position: relative;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .checkbox-group input[type="checkbox"]:focus-visible + label {
+    outline: 3px solid var(--color-electric);
+    outline-offset: 2px;
+  }
+
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-gray-700);
+    padding: 15px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 10px;
+    transition: all var(--transition-fast);
+  }
+
+  .checkbox-group input[type="checkbox"]:checked + label {
+    background: rgba(6, 182, 212, 0.05);
+    border-color: var(--color-electric);
+  }
+
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 4px;
+    margin-right: 12px;
+    position: relative;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .checkbox-group input[type="checkbox"]:checked + label .checkbox-custom {
+    background: var(--color-electric);
+    border-color: var(--color-electric);
+  }
+
+  .checkbox-group input[type="checkbox"]:checked + label .checkbox-custom::after {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Venmo Section */
+  .venmo-section {
+    text-align: center;
+  }
+
+  .school-photo {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .school-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .venmo-note {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-gray-600);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+  }
+
+  .venmo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #008CFF;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-medium);
+    box-shadow: 0 4px 15px rgba(0, 140, 255, 0.3);
+    margin-top: 8px;
+  }
+
+  .venmo-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 140, 255, 0.4);
+    background: #0074D4;
+  }
+
+  .form-actions {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .submit-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: 2px solid transparent;
+    padding: 16px 32px;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+  }
+
+  .submit-btn.loading .btn-text { opacity: 0; }
+  .submit-btn.loading .btn-loading { opacity: 1; }
+
+  .btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .success-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .success-message.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  .success-content {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+  }
+
+  .success-content h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--color-primary-700);
+    margin: 0 0 15px 0;
+  }
+
+  .success-content p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-gray-500);
+    margin: 0 0 30px 0;
+  }
+
+  .success-content .venmo-btn {
+    margin-top: 0;
+  }
+
+  /* Confetti */
+  :global(.confetti) {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    z-index: 1000;
+    animation: confetti-fall linear forwards;
+  }
+
+  @keyframes confetti-fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rsvp-header h1 { font-size: 32px; }
+    .event-details { flex-direction: column; align-items: center; gap: 20px; }
+    .rsvp-form { padding: 30px 20px; }
+    .form-row { flex-direction: column; gap: 0; }
+    .submit-btn { width: 100%; }
+    .venmo-btn { width: 100%; justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .rsvp-page { padding: 40px 0; }
+    .rsvp-header h1 { font-size: 24px; }
+    .rsvp-subtitle { font-size: 16px; }
+  }
+</style>

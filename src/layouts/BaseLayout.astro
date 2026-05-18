@@ -163,6 +163,7 @@ const { title, description, ogImage = 'https://static.wixstatic.com/media/4c7a9c
     min-width: 320px;
   }
 
+
   * {
     box-sizing: border-box;
   }
@@ -213,6 +214,16 @@ const { title, description, ogImage = 'https://static.wixstatic.com/media/4c7a9c
       radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
       radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
     animation: ambient-shift 20s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ambient-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 60px);
     pointer-events: none;
     z-index: 0;
   }

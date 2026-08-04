@@ -3,6 +3,174 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Banner from '../components/Banner.astro';
 import Footer from '../components/Footer.astro';
+
+const photos = [
+  { src: 'IMG_5703.jpg', label: 'Class memories' },
+  { src: 'IMG_5704.jpg', label: 'Class memories' },
+  { src: 'IMG_5678.jpg', label: 'Class memories' },
+  { src: 'IMG_5714.jpg', label: 'Class memories' },
+  { src: 'IMG_6388.jpg', label: 'Class memories' },
+  { src: '465549368_9055609157782693_5839450919543582768_n.jpg', label: 'Class memories' },
+  { src: 'IMG_6336.jpg', label: 'Class memories' },
+  { src: 'IMG_6396.jpg', label: 'Class memories' },
+  { src: 'IMG_6402.jpg', label: 'Class memories' },
+  { src: 'IMG_5724.jpg', label: 'Class memories' },
+  { src: 'IMG_5748.jpg', label: 'Class memories' },
+  { src: 'IMG_6349.jpg', label: 'Class memories' },
+  { src: 'IMG_5671.jpg', label: 'Class memories' },
+  { src: 'IMG_6373.jpg', label: 'Class memories' },
+  { src: 'IMG_6346.jpg', label: 'Class memories' },
+  { src: 'IMG_6414.jpg', label: 'Class memories' },
+  { src: 'IMG_5754.jpg', label: 'Class memories' },
+  { src: 'IMG_6386.jpg', label: 'Class memories' },
+  { src: '465186592_9055609151116027_6360204118983415303_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_6352.jpg', label: 'Class memories' },
+  { src: 'IMG_5732.jpg', label: 'Class memories' },
+  { src: 'IMG_5676.jpg', label: 'Class memories' },
+  { src: 'IMG_5720.jpg', label: 'Class memories' },
+  { src: '465127603_9055608791116063_4710872640504337783_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5664.jpg', label: 'Class memories' },
+  { src: 'IMG_5753.jpg', label: 'Class memories' },
+  { src: 'IMG_5729.jpg', label: 'Class memories' },
+  { src: 'IMG_6370.jpg', label: 'Class memories' },
+  { src: 'IMG_6398.jpg', label: 'Class memories' },
+  { src: 'IMG_5685.jpg', label: 'Class memories' },
+  { src: 'IMG_5681.jpg', label: 'Class memories' },
+  { src: 'IMG_5695.jpg', label: 'Class memories' },
+  { src: 'IMG_6360.jpg', label: 'Class memories' },
+  { src: 'IMG_5698.jpg', label: 'Class memories' },
+  { src: '464949062_9055609161116026_1478321318197612182_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_6358.jpg', label: 'Class memories' },
+  { src: 'IMG_6340.jpg', label: 'Class memories' },
+  { src: 'IMG_5728.jpg', label: 'Class memories' },
+  { src: '465543029_9055609131116029_3663602968941105562_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5741.jpg', label: 'Class memories' },
+  { src: 'IMG_6412.jpg', label: 'Class memories' },
+  { src: 'IMG_6354.jpg', label: 'Class memories' },
+  { src: 'IMG_5734.jpg', label: 'Class memories' },
+  { src: 'IMG_5750.jpg', label: 'Class memories' },
+  { src: 'IMG_6343.jpg', label: 'Class memories' },
+  { src: 'IMG_5731.jpg', label: 'Class memories' },
+  { src: 'IMG_6405.jpg', label: 'Class memories' },
+  { src: 'IMG_5670.jpg', label: 'Class memories' },
+  { src: 'IMG_5701.jpg', label: 'Class memories' },
+  { src: 'IMG_5711.jpg', label: 'Class memories' },
+  { src: 'IMG_5699.jpg', label: 'Class memories' },
+  { src: 'IMG_5675.jpg', label: 'Class memories' },
+  { src: 'IMG_5684.jpg', label: 'Class memories' },
+  { src: '465366656_9055609141116028_6934270115417462327_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5755.jpg', label: 'Class memories' },
+  { src: 'IMG_5710.jpg', label: 'Class memories' },
+  { src: 'IMG_5762.jpg', label: 'Class memories' },
+  { src: 'IMG_5746.jpg', label: 'Class memories' },
+  { src: 'IMG_5691.jpg', label: 'Class memories' },
+  { src: 'IMG_5700.jpg', label: 'Class memories' },
+  { src: 'IMG_6341.jpg', label: 'Class memories' },
+  { src: 'IMG_6381.jpg', label: 'Class memories' },
+  { src: 'IMG_5706.jpg', label: 'Class memories' },
+  { src: 'IMG_5727.jpg', label: 'Class memories' },
+  { src: '465111878_9055608797782729_7673751147646940858_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5760.jpg', label: 'Class memories' },
+  { src: 'IMG_5674.jpg', label: 'Class memories' },
+  { src: 'IMG_6366.jpg', label: 'Class memories' },
+  { src: 'IMG_5694.jpg', label: 'Class memories' },
+  { src: 'IMG_5709.jpg', label: 'Class memories' },
+  { src: 'IMG_6383.jpg', label: 'Class memories' },
+  { src: 'IMG_6391.jpg', label: 'Class memories' },
+  { src: 'IMG_5702.jpg', label: 'Class memories' },
+  { src: 'IMG_5745.jpg', label: 'Class memories' },
+  { src: 'IMG_5737.jpg', label: 'Class memories' },
+  { src: 'IMG_6335.jpg', label: 'Class memories' },
+  { src: 'IMG_5736.jpg', label: 'Class memories' },
+  { src: 'IMG_5730.jpg', label: 'Class memories' },
+  { src: 'IMG_5662.jpg', label: 'Class memories' },
+  { src: 'IMG_5665.jpg', label: 'Class memories' },
+  { src: '465411351_9055609154449360_284769326469106125_n.jpg', label: '2016 Reunion' },
+  { src: '465055155_9055609144449361_4123593596248471399_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_6337.jpg', label: 'Class memories' },
+  { src: 'IMG_6362.jpg', label: 'Class memories' },
+  { src: 'IMG_5718.jpg', label: 'Class memories' },
+  { src: 'IMG_5712.jpg', label: 'Class memories' },
+  { src: 'IMG_6374.jpg', label: 'Class memories' },
+  { src: 'IMG_6413.jpg', label: 'Class memories' },
+  { src: '465070141_9055608801116062_7605442766377908196_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5672.jpg', label: 'Class memories' },
+  { src: 'IMG_5660.jpg', label: 'Class memories' },
+  { src: 'IMG_5743.jpg', label: 'Class memories' },
+  { src: 'IMG_6334.jpg', label: 'Class memories' },
+  { src: 'IMG_5708.jpg', label: 'Class memories' },
+  { src: 'IMG_5761.jpg', label: 'Class memories' },
+  { src: '465241126_9055608804449395_4727202403310464972_n.jpg', label: 'Class memories' },
+  { src: 'IMG_6407.jpg', label: 'Class memories' },
+  { src: 'IMG_5690.jpg', label: 'Class memories' },
+  { src: 'IMG_6375.jpg', label: 'Class memories' },
+  { src: 'IMG_5715.jpg', label: 'Class memories' },
+  { src: '465448933_9055608811116061_3195572261878764037_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5735.jpg', label: 'Class memories' },
+  { src: 'IMG_5751.jpg', label: 'Class memories' },
+  { src: '474779326_952042330359989_8718990319472695709_n.jpg', label: 'Class memories' },
+  { src: 'IMG_5747.jpg', label: 'Class memories' },
+  { src: 'IMG_5688.jpg', label: 'Class memories' },
+  { src: 'IMG_6353.jpg', label: 'Class memories' },
+  { src: 'IMG_5733.jpg', label: 'Class memories' },
+  { src: 'IMG_5749.jpg', label: 'Class memories' },
+  { src: 'IMG_5716.jpg', label: 'Class memories' },
+  { src: 'IMG_6347.jpg', label: 'Class memories' },
+  { src: 'IMG_6384.jpg', label: 'Class memories' },
+  { src: '93796277_3172592099417791_6998345339895808000_n.jpg', label: 'Class memories' },
+  { src: 'IMG_5742.jpg', label: 'Class memories' },
+  { src: 'IMG_5682.jpg', label: 'Class memories' },
+  { src: 'IMG_5705.jpg', label: 'Class memories' },
+  { src: 'IMG_5697.jpg', label: 'Class memories' },
+  { src: 'IMG_6344.jpg', label: 'Class memories' },
+  { src: 'IMG_5679.jpg', label: 'Class memories' },
+  { src: 'IMG_5668.jpg', label: 'Class memories' },
+  { src: 'IMG_5663.jpg', label: 'Class memories' },
+  { src: 'IMG_5719.jpg', label: 'Class memories' },
+  { src: 'IMG_5739.jpg', label: 'Class memories' },
+  { src: 'IMG_5693.jpg', label: 'Class memories' },
+  { src: 'IMG_5758.jpg', label: 'Class memories' },
+  { src: 'IMG_6406.jpg', label: 'Class memories' },
+  { src: 'IMG_6408.jpg', label: 'Class memories' },
+  { src: 'IMG_6393.jpg', label: 'Class memories' },
+  { src: 'IMG_6379.jpg', label: 'Class memories' },
+  { src: 'IMG_5721.jpg', label: 'Class memories' },
+  { src: 'IMG_5713.jpg', label: 'Class memories' },
+  { src: 'IMG_5723.jpg', label: 'Class memories' },
+  { src: 'IMG_6377.jpg', label: 'Class memories' },
+  { src: 'IMG_5722.jpg', label: 'Class memories' },
+  { src: 'IMG_5686.jpg', label: 'Class memories' },
+  { src: 'IMG_6359.jpg', label: 'Class memories' },
+  { src: 'IMG_6357.jpg', label: 'Class memories' },
+  { src: 'IMG_5673.jpg', label: 'Class memories' },
+  { src: 'IMG_6396.jpg', label: 'Class memories' },
+  { src: 'IMG_5680.jpg', label: 'Class memories' },
+  { src: 'IMG_5667.jpg', label: 'Class memories' },
+  { src: 'IMG_5683.jpg', label: 'Class memories' },
+  { src: 'IMG_6348.jpg', label: 'Class memories' },
+  { src: 'IMG_5669.jpg', label: 'Class memories' },
+  { src: 'IMG_5759.jpg', label: 'Class memories' },
+  { src: 'IMG_5692.jpg', label: 'Class memories' },
+  { src: 'IMG_6411.jpg', label: 'Class memories' },
+  { src: 'IMG_5687.jpg', label: 'Class memories' },
+  { src: 'IMG_6368.jpg', label: 'Class memories' },
+  { src: 'IMG_5689.jpg', label: 'Class memories' },
+  { src: 'IMG_6410.jpg', label: 'Class memories' },
+  { src: 'IMG_5661.jpg', label: 'Class memories' },
+  { src: '465264510_9055608807782728_6239206708037678016_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_6397.jpg', label: 'Class memories' },
+  { src: 'IMG_5738.jpg', label: 'Class memories' },
+  { src: 'IMG_6361.jpg', label: 'Class memories' },
+  { src: 'IMG_5717.jpg', label: 'Class memories' },
+  { src: '465438560_9055608814449394_1075421722554769452_n.jpg', label: '2016 Reunion' },
+  { src: 'IMG_5696.jpg', label: 'Class memories' },
+  { src: 'IMG_6371.jpg', label: 'Class memories' },
+  { src: 'IMG_5763.jpg', label: 'Class memories' },
+  { src: 'IMG_6364.jpg', label: 'Class memories' },
+  { src: 'IMG_5677.jpg', label: 'Class memories' },
+  { src: '300972839_411226991108195_3828444108434351779_n.jpg', label: 'Class memories' },
+  { src: '465240110_9055608787782730_41978682562471897_n.jpg', label: 'Class memories' },
+];
 ---
 
 <BaseLayout
@@ -19,240 +187,17 @@ import Footer from '../components/Footer.astro';
           <h2 class="section-title">MEMORIES</h2>
           <div class="title-accent"></div>
         </div>
-        <div class="memories-gallery animate-on-scroll stagger">
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465127603_9055608791116063_4710872640504337783_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+        <div class="memories-gallery">
+          {photos.map((photo) => (
+            <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label={`View photo: ${photo.label}`}>
+              <div class="memory-image-wrapper">
+                <img src={`/images/${photo.src}`} alt="Class of 1996 reunion photo" loading="lazy" />
+                <div class="overlay">
+                  <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                </div>
               </div>
             </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465438560_9055608814449394_1075421722554769452_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465543029_9055609131116029_3663602968941105562_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465264510_9055608807782728_6239206708037678016_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465070141_9055608801116062_7605442766377908196_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465055155_9055609144449361_4123593596248471399_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465111878_9055608797782729_7673751147646940858_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465448933_9055608811116061_3195572261878764037_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465186592_9055609151116027_6360204118983415303_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/464949062_9055609161116026_1478321318197612182_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465366656_9055609141116028_6934270115417462327_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465411351_9055609154449360_284769326469106125_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: 2016 Reunion">
-            <div class="memory-image-wrapper">
-              <img src="/images/465549368_9055609157782693_5839450919543582768_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">2016 Reunion</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
-            <div class="memory-image-wrapper">
-              <img src="/images/465240110_9055608787782730_41978682562471897_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">Class memories</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
-            <div class="memory-image-wrapper">
-              <img src="/images/465241126_9055608804449395_4727202403310464972_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">Class memories</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
-            <div class="memory-image-wrapper">
-              <img src="/images/474779326_952042330359989_8718990319472695709_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">Class memories</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
-            <div class="memory-image-wrapper">
-              <img src="/images/300972839_411226991108195_3828444108434351779_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">Class memories</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
-
-          <div class="memory-card" data-lightbox="gallery" tabindex="0" role="button" aria-label="View photo: Class memories">
-            <div class="memory-image-wrapper">
-              <img src="/images/93796277_3172592099417791_6998345339895808000_n.jpg" alt="Class of 1996 reunion photo" />
-              <div class="overlay">
-                <svg class="zoom-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
-              </div>
-            </div>
-            <div class="memory-info">
-              <p class="memory-date">Class memories</p>
-              <p class="memory-description">Class memories</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -270,7 +215,7 @@ import Footer from '../components/Footer.astro';
         <div class="lightbox-info">
           <p id="lightbox-caption"></p>
           <div class="lightbox-counter" aria-live="polite">
-            <span id="lightbox-current">1</span> / <span id="lightbox-total">18</span>
+            <span id="lightbox-current">1</span> / <span id="lightbox-total">{photos.length}</span>
           </div>
         </div>
       </div>
@@ -421,10 +366,8 @@ import Footer from '../components/Footer.astro';
 
   .memory-card {
     width: 100%;
-    background: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
     cursor: pointer;
     position: relative;
@@ -490,32 +433,11 @@ import Footer from '../components/Footer.astro';
 
   .memory-card img {
     width: 100%;
-    height: 250px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
   }
 
-  .memory-info {
-    padding: 20px;
-  }
-
-  .memory-date {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-primary-700);
-    margin: 0 0 8px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .memory-description {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--color-gray-500);
-    margin: 0;
-    line-height: 1.5;
-  }
 
   /* Lightbox */
   .lightbox {

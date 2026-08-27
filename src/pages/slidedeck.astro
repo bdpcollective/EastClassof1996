@@ -1,0 +1,1017 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { photos } from '../data/photos.js';
+---
+
+<BaseLayout
+  title="Slide Deck | Lincoln East High School Class of 1996"
+  description="Full-screen photo slideshow for the Class of 1996 30th Reunion."
+  noindex={true}
+>
+  <main id="main-content" class="deck">
+    <!-- Two stacked layers so slides can cross-fade / slide over each other -->
+    <div class="stage" id="stage">
+      <div class="layer is-active" data-layer="0">
+        <div class="layer-backdrop"></div>
+        <img class="layer-img" alt="" decoding="async" />
+      </div>
+      <div class="layer" data-layer="1">
+        <div class="layer-backdrop"></div>
+        <img class="layer-img" alt="" decoding="async" />
+      </div>
+    </div>
+
+    <div class="caption" id="caption" hidden></div>
+
+    <div class="progress" id="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Everything in .ui fades out when the mouse goes idle -->
+    <div class="ui" id="ui">
+      <div class="ui-top">
+        <a href="/" class="ui-link">&larr; Back to site</a>
+        <span class="counter" id="counter">&nbsp;</span>
+      </div>
+
+      <div class="ui-bottom">
+        <div class="controls">
+          <button type="button" id="prevBtn" class="ctrl" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <button type="button" id="playBtn" class="ctrl ctrl-primary" aria-label="Pause slideshow" aria-pressed="false">
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" /><rect x="14" y="5" width="4" height="14" /></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="7 4 20 12 7 20" /></svg>
+          </button>
+          <button type="button" id="nextBtn" class="ctrl" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
+          <button type="button" id="fsBtn" class="ctrl" aria-label="Toggle full screen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3" /></svg>
+          </button>
+          <button type="button" id="settingsBtn" class="ctrl" aria-label="Slideshow settings" aria-expanded="false" aria-controls="settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M12 2v3m0 14v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M2 12h3m14 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings drawer: opened from the gear, stays open until dismissed -->
+    <aside class="settings" id="settings" hidden aria-label="Slideshow settings">
+      <div class="settings-head">
+        <h2>Slideshow settings</h2>
+        <button type="button" id="closeSettings" class="settings-close" aria-label="Close settings">&times;</button>
+      </div>
+
+      <div class="setting">
+        <label for="secs">Seconds per slide <output id="secsOut">7</output></label>
+        <input type="range" id="secs" min="3" max="30" step="1" value="7" />
+      </div>
+
+      <div class="setting">
+        <label for="transition">Transition</label>
+        <select id="transition">
+          <option value="fade">Cross-fade</option>
+          <option value="slide">Slide</option>
+          <option value="zoom">Zoom</option>
+          <option value="none">None (instant)</option>
+        </select>
+      </div>
+
+      <div class="setting setting-check">
+        <input type="checkbox" id="kenburns" />
+        <label for="kenburns">Slow zoom while showing <span>gentle drift, looks alive on a big screen</span></label>
+      </div>
+
+      <div class="setting setting-check">
+        <input type="checkbox" id="shuffle" />
+        <label for="shuffle">Shuffle order <span>reshuffles each time the deck loops</span></label>
+      </div>
+
+      <div class="setting setting-check">
+        <input type="checkbox" id="fill" />
+        <label for="fill">Fill the screen <span>crops edges; off shows the whole photo on a blurred backdrop</span></label>
+      </div>
+
+      <div class="setting setting-check">
+        <input type="checkbox" id="captions" />
+        <label for="captions">Show captions</label>
+      </div>
+
+      <div class="setting setting-check">
+        <input type="checkbox" id="progressOn" />
+        <label for="progressOn">Show progress bar</label>
+      </div>
+
+      <div class="setting setting-check">
+        <input type="checkbox" id="wakelock" />
+        <label for="wakelock">Keep the screen awake <span id="wakeState"></span></label>
+      </div>
+
+      <div class="settings-foot">
+        <button type="button" id="resetBtn" class="settings-reset">Reset to defaults</button>
+      </div>
+
+      <p class="settings-keys">
+        <kbd>Space</kbd> play / pause &nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> change photo &nbsp;
+        <kbd>F</kbd> full screen &nbsp; <kbd>S</kbd> settings &nbsp; <kbd>Esc</kbd> close
+      </p>
+    </aside>
+
+    <div class="hint" id="hint">
+      <strong>{photos.length} photos</strong>
+      <span>Move the mouse for controls &middot; <kbd>F</kbd> for full screen &middot; <kbd>Space</kbd> to pause</span>
+    </div>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ photos }}>
+  (function () {
+    var STORAGE_KEY = 'east96-slidedeck-v1';
+    var DEFAULTS = {
+      secs: 7,
+      transition: 'fade',
+      kenburns: true,
+      shuffle: true,
+      fill: false,
+      captions: false,
+      progress: true,
+      wakelock: true
+    };
+
+    var el = {
+      deck: document.querySelector('.deck'),
+      stage: document.getElementById('stage'),
+      layers: Array.prototype.slice.call(document.querySelectorAll('.layer')),
+      caption: document.getElementById('caption'),
+      counter: document.getElementById('counter'),
+      progress: document.getElementById('progress'),
+      progressBar: document.getElementById('progressBar'),
+      ui: document.getElementById('ui'),
+      hint: document.getElementById('hint'),
+      settings: document.getElementById('settings'),
+      settingsBtn: document.getElementById('settingsBtn'),
+      closeSettings: document.getElementById('closeSettings'),
+      playBtn: document.getElementById('playBtn'),
+      prevBtn: document.getElementById('prevBtn'),
+      nextBtn: document.getElementById('nextBtn'),
+      fsBtn: document.getElementById('fsBtn'),
+      resetBtn: document.getElementById('resetBtn'),
+      wakeState: document.getElementById('wakeState'),
+      inputs: {
+        secs: document.getElementById('secs'),
+        secsOut: document.getElementById('secsOut'),
+        transition: document.getElementById('transition'),
+        kenburns: document.getElementById('kenburns'),
+        shuffle: document.getElementById('shuffle'),
+        fill: document.getElementById('fill'),
+        captions: document.getElementById('captions'),
+        progress: document.getElementById('progressOn'),
+        wakelock: document.getElementById('wakelock')
+      }
+    };
+
+    var settings = load();
+    var order = [];
+    var pos = -1;
+    var active = 0;
+    var playing = true;
+    var slideTimer = null;
+    var slideStart = 0;
+    var rafId = null;
+    var wakeLock = null;
+    var broken = Object.create(null);
+
+    // ---------- settings persistence ----------
+
+    function load() {
+      var saved = {};
+      try {
+        saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (e) {
+        saved = {};
+      }
+      var out = {};
+      for (var k in DEFAULTS) {
+        out[k] = typeof saved[k] === typeof DEFAULTS[k] ? saved[k] : DEFAULTS[k];
+      }
+      out.secs = Math.min(30, Math.max(3, out.secs));
+      if (['fade', 'slide', 'zoom', 'none'].indexOf(out.transition) === -1) {
+        out.transition = DEFAULTS.transition;
+      }
+      return out;
+    }
+
+    function save() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+      } catch (e) {
+        /* private mode — settings just won't persist */
+      }
+    }
+
+    function syncInputs() {
+      el.inputs.secs.value = settings.secs;
+      el.inputs.secsOut.textContent = settings.secs;
+      el.inputs.transition.value = settings.transition;
+      el.inputs.kenburns.checked = settings.kenburns;
+      el.inputs.shuffle.checked = settings.shuffle;
+      el.inputs.fill.checked = settings.fill;
+      el.inputs.captions.checked = settings.captions;
+      el.inputs.progress.checked = settings.progress;
+      el.inputs.wakelock.checked = settings.wakelock;
+    }
+
+    function applySettings() {
+      el.deck.dataset.transition = settings.transition;
+      el.deck.classList.toggle('is-fill', settings.fill);
+      el.deck.classList.toggle('is-kenburns', settings.kenburns);
+      el.progress.hidden = !settings.progress;
+      el.caption.hidden = !settings.captions;
+      el.deck.style.setProperty('--slide-secs', settings.secs + 's');
+      if (settings.wakelock) {
+        requestWakeLock();
+      } else {
+        releaseWakeLock();
+      }
+    }
+
+    // ---------- playlist ----------
+
+    function buildOrder() {
+      order = photos.map(function (photo, i) { return i; });
+      if (settings.shuffle) {
+        for (var i = order.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = order[i];
+          order[i] = order[j];
+          order[j] = tmp;
+        }
+      }
+    }
+
+    function photoAt(offset) {
+      if (!order.length) return null;
+      var idx = ((pos + offset) % order.length + order.length) % order.length;
+      return photos[order[idx]];
+    }
+
+    function src(photo) {
+      return '/images/lightbox/' + photo.name + '.webp';
+    }
+
+    function preload(count) {
+      for (var i = 1; i <= count; i++) {
+        var photo = photoAt(i);
+        if (photo) {
+          var img = new Image();
+          img.src = src(photo);
+        }
+      }
+    }
+
+    // ---------- slide transitions ----------
+
+    function show(step) {
+      if (!order.length) return;
+
+      // Wrapping past the end reshuffles, so a long party never repeats the
+      // same running order.
+      var wrapping = pos + step >= order.length || pos + step < 0;
+      if (wrapping && settings.shuffle && pos !== -1) {
+        buildOrder();
+        pos = step > 0 ? -1 : order.length;
+      }
+      pos = ((pos + step) % order.length + order.length) % order.length;
+
+      var photo = photos[order[pos]];
+      if (!photo || broken[photo.name]) {
+        // Skip photos we already know are missing rather than showing a gap.
+        var tries = 0;
+        while (photo && broken[photo.name] && tries < order.length) {
+          pos = ((pos + (step >= 0 ? 1 : -1)) % order.length + order.length) % order.length;
+          photo = photos[order[pos]];
+          tries++;
+        }
+        if (!photo || broken[photo.name]) return;
+      }
+
+      var incoming = el.layers[1 - active];
+      var outgoing = el.layers[active];
+      var img = incoming.querySelector('.layer-img');
+      var backdrop = incoming.querySelector('.layer-backdrop');
+      var url = src(photo);
+
+      img.onerror = function () {
+        broken[photo.name] = true;
+        show(step >= 0 ? 1 : -1);
+      };
+      img.src = url;
+      img.alt = 'Class of 1996 — ' + photo.label;
+      backdrop.style.backgroundImage = 'url("' + url + '")';
+
+      incoming.classList.remove('is-leaving', 'is-entering');
+      // Force a reflow so the enter animation restarts on every slide.
+      void incoming.offsetWidth;
+      incoming.classList.add('is-active', 'is-entering');
+      outgoing.classList.remove('is-active');
+      outgoing.classList.add('is-leaving');
+
+      active = 1 - active;
+
+      el.counter.textContent = (pos + 1) + ' / ' + order.length;
+      el.caption.textContent = photo.label;
+
+      preload(2);
+      restartTimer();
+    }
+
+    // ---------- timing ----------
+
+    function restartTimer() {
+      clearTimeout(slideTimer);
+      cancelAnimationFrame(rafId);
+      slideStart = Date.now();
+      if (!playing) {
+        el.progressBar.style.transform = 'scaleX(0)';
+        return;
+      }
+      slideTimer = setTimeout(function () { show(1); }, settings.secs * 1000);
+      tickProgress();
+    }
+
+    function tickProgress() {
+      if (!settings.progress) {
+        el.progressBar.style.transform = 'scaleX(0)';
+        return;
+      }
+      var pct = Math.min(1, (Date.now() - slideStart) / (settings.secs * 1000));
+      el.progressBar.style.transform = 'scaleX(' + pct + ')';
+      if (playing) rafId = requestAnimationFrame(tickProgress);
+    }
+
+    function setPlaying(next) {
+      playing = next;
+      el.deck.classList.toggle('is-paused', !playing);
+      el.playBtn.setAttribute('aria-pressed', String(!playing));
+      el.playBtn.setAttribute('aria-label', playing ? 'Pause slideshow' : 'Play slideshow');
+      if (playing) {
+        restartTimer();
+      } else {
+        clearTimeout(slideTimer);
+        cancelAnimationFrame(rafId);
+      }
+      revealUI();
+    }
+
+    // ---------- idle UI ----------
+
+    var idleTimer = null;
+    var IDLE_MS = 3000;
+
+    function revealUI() {
+      el.deck.classList.remove('is-idle');
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () {
+        // Never hide the controls while the settings drawer is open.
+        if (el.settings.hidden) el.deck.classList.add('is-idle');
+      }, IDLE_MS);
+    }
+
+    function openSettings(open) {
+      el.settings.hidden = !open;
+      el.settingsBtn.setAttribute('aria-expanded', String(open));
+      if (open) {
+        revealUI();
+        el.inputs.secs.focus();
+      } else {
+        revealUI();
+      }
+    }
+
+    // ---------- screen wake lock ----------
+
+    function requestWakeLock() {
+      if (!('wakeLock' in navigator)) {
+        el.wakeState.textContent = 'not supported in this browser';
+        return;
+      }
+      if (wakeLock) return;
+      navigator.wakeLock.request('screen').then(function (lock) {
+        wakeLock = lock;
+        el.wakeState.textContent = 'on';
+        lock.addEventListener('release', function () { wakeLock = null; });
+      }).catch(function () {
+        el.wakeState.textContent = 'blocked — check the display sleep setting';
+      });
+    }
+
+    function releaseWakeLock() {
+      if (wakeLock) {
+        wakeLock.release().catch(function () {});
+        wakeLock = null;
+      }
+      if ('wakeLock' in navigator) el.wakeState.textContent = 'off';
+    }
+
+    // ---------- fullscreen ----------
+
+    function toggleFullscreen() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(function () {});
+      } else {
+        document.documentElement.requestFullscreen().catch(function () {});
+      }
+    }
+
+    // ---------- wiring ----------
+
+    el.playBtn.addEventListener('click', function () { setPlaying(!playing); });
+    el.prevBtn.addEventListener('click', function () { show(-1); revealUI(); });
+    el.nextBtn.addEventListener('click', function () { show(1); revealUI(); });
+    el.fsBtn.addEventListener('click', function () { toggleFullscreen(); revealUI(); });
+    el.settingsBtn.addEventListener('click', function () { openSettings(el.settings.hidden); });
+    el.closeSettings.addEventListener('click', function () { openSettings(false); });
+
+    el.inputs.secs.addEventListener('input', function () {
+      settings.secs = parseInt(this.value, 10);
+      el.inputs.secsOut.textContent = settings.secs;
+      applySettings();
+      save();
+      restartTimer();
+    });
+
+    el.inputs.transition.addEventListener('change', function () {
+      settings.transition = this.value;
+      applySettings();
+      save();
+    });
+
+    [['kenburns', 'kenburns'], ['shuffle', 'shuffle'], ['fill', 'fill'],
+     ['captions', 'captions'], ['progress', 'progress'], ['wakelock', 'wakelock']
+    ].forEach(function (pair) {
+      el.inputs[pair[0]].addEventListener('change', function () {
+        settings[pair[1]] = this.checked;
+        if (pair[1] === 'shuffle') {
+          var current = photos[order[pos]];
+          buildOrder();
+          pos = order.indexOf(photos.indexOf(current));
+          el.counter.textContent = (pos + 1) + ' / ' + order.length;
+        }
+        applySettings();
+        save();
+      });
+    });
+
+    el.resetBtn.addEventListener('click', function () {
+      settings = JSON.parse(JSON.stringify(DEFAULTS));
+      syncInputs();
+      applySettings();
+      save();
+      restartTimer();
+    });
+
+    // Clicking the photo area toggles play/pause; the UI swallows its own clicks.
+    el.stage.addEventListener('click', function () { setPlaying(!playing); });
+
+    ['mousemove', 'pointerdown', 'touchstart', 'wheel'].forEach(function (evt) {
+      document.addEventListener(evt, revealUI, { passive: true });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      var typing = /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName);
+      if (e.key === 'Escape') { openSettings(false); return; }
+      if (typing) return;
+
+      if (e.key === ' ') { e.preventDefault(); setPlaying(!playing); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); show(1); revealUI(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); show(-1); revealUI(); }
+      else if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); }
+      else if (e.key === 's' || e.key === 'S') { openSettings(el.settings.hidden); }
+    });
+
+    // Re-acquire the wake lock after the tab is backgrounded and restored.
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && settings.wakelock) requestWakeLock();
+    });
+
+    // ---------- go ----------
+
+    syncInputs();
+    applySettings();
+    buildOrder();
+    show(1);
+    revealUI();
+
+    setTimeout(function () { el.hint.classList.add('is-gone'); }, 6000);
+  })();
+</script>
+
+<style is:global>
+  /* The deck owns the whole viewport on this page only. */
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+</style>
+
+<style>
+  .deck {
+    --slide-secs: 7s;
+    --fade-ms: 900ms;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: var(--font-body);
+  }
+
+  .deck.is-idle {
+    cursor: none;
+  }
+
+  /* ---------- stage & layers ---------- */
+
+  .stage {
+    position: absolute;
+    inset: 0;
+  }
+
+  .layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 0;
+  }
+
+  .layer.is-active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .layer.is-leaving {
+    z-index: 1;
+  }
+
+  .layer-backdrop {
+    position: absolute;
+    inset: -6%;
+    background-position: center;
+    background-size: cover;
+    filter: blur(40px) brightness(0.45) saturate(1.2);
+    transform: scale(1.1);
+  }
+
+  .layer-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .deck.is-fill .layer-img {
+    object-fit: cover;
+  }
+
+  .deck.is-fill .layer-backdrop {
+    display: none;
+  }
+
+  /* ---------- transitions ---------- */
+
+  .deck[data-transition='fade'] .layer {
+    transition: opacity var(--fade-ms) ease-in-out;
+  }
+
+  .deck[data-transition='slide'] .layer {
+    transition: opacity var(--fade-ms) ease-in-out, transform var(--fade-ms) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .deck[data-transition='slide'] .layer.is-entering {
+    animation: slide-in var(--fade-ms) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .deck[data-transition='slide'] .layer.is-leaving {
+    transform: translateX(-12%);
+  }
+
+  .deck[data-transition='zoom'] .layer {
+    transition: opacity var(--fade-ms) ease-in-out, transform var(--fade-ms) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .deck[data-transition='zoom'] .layer.is-entering {
+    animation: zoom-in var(--fade-ms) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .deck[data-transition='zoom'] .layer.is-leaving {
+    transform: scale(1.06);
+  }
+
+  .deck[data-transition='none'] .layer {
+    transition: none;
+  }
+
+  @keyframes slide-in {
+    from { transform: translateX(12%); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 1; }
+  }
+
+  @keyframes zoom-in {
+    from { transform: scale(0.94); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+
+  /* Slow drift while a slide is on screen. Paused with the slideshow so a
+     frozen slide is genuinely still. */
+  .deck.is-kenburns .layer.is-active .layer-img {
+    animation: kenburns calc(var(--slide-secs) + 1.5s) ease-out forwards;
+  }
+
+  .deck.is-kenburns.is-paused .layer .layer-img {
+    animation-play-state: paused;
+  }
+
+  @keyframes kenburns {
+    from { transform: scale(1)     translate3d(0, 0, 0); }
+    to   { transform: scale(1.075) translate3d(-1.2%, -0.8%, 0); }
+  }
+
+  /* ---------- caption & progress ---------- */
+
+  .caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 96px;
+    z-index: 4;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+  }
+
+  .progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: var(--gradient-primary, #06b6d4);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  /* ---------- auto-hiding UI ---------- */
+
+  .ui {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 400ms ease;
+  }
+
+  .deck.is-idle .ui {
+    opacity: 0;
+  }
+
+  .ui-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 28px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+  }
+
+  .ui-link,
+  .counter {
+    pointer-events: auto;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  .ui-link:hover {
+    color: #fff;
+  }
+
+  .counter {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ui-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 28px 28px 32px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  }
+
+  .controls {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(12, 14, 22, 0.62);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .ctrl {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+
+  .ctrl:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .ctrl:focus-visible {
+    outline: 3px solid var(--color-electric, #06b6d4);
+    outline-offset: 2px;
+  }
+
+  .ctrl svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ctrl-primary {
+    width: 54px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .ctrl-primary svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .icon-pause rect,
+  .icon-play polygon {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .icon-play {
+    display: none;
+  }
+
+  .deck.is-paused .icon-play {
+    display: block;
+  }
+
+  .deck.is-paused .icon-pause {
+    display: none;
+  }
+
+  /* ---------- settings drawer ---------- */
+
+  .settings {
+    position: absolute;
+    top: 50%;
+    right: 28px;
+    transform: translateY(-50%);
+    z-index: 8;
+    width: min(380px, calc(100vw - 40px));
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+    padding: 24px;
+    border-radius: 18px;
+    background: rgba(12, 14, 22, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .settings[hidden] {
+    display: none;
+  }
+
+  .settings-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .settings-head h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .settings-close {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .settings-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .setting {
+    margin-bottom: 18px;
+  }
+
+  .setting > label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .setting output {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-electric-light, #67e8f9);
+    font-weight: 600;
+  }
+
+  .setting input[type='range'] {
+    width: 100%;
+    accent-color: var(--color-electric, #06b6d4);
+  }
+
+  .setting select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+  }
+
+  .setting-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .setting-check input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--color-electric, #06b6d4);
+  }
+
+  .setting-check label {
+    display: block;
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .setting-check label span {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .settings-foot {
+    margin: 22px 0 14px;
+  }
+
+  .settings-reset {
+    width: 100%;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .settings-reset:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+
+  .settings-keys {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  kbd {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.1);
+    font-family: inherit;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* ---------- first-run hint ---------- */
+
+  .hint {
+    position: absolute;
+    left: 50%;
+    bottom: 110px;
+    transform: translateX(-50%);
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    background: rgba(12, 14, 22, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 700ms ease;
+    pointer-events: none;
+  }
+
+  .hint strong {
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+  }
+
+  .hint.is-gone {
+    opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    .caption { bottom: 84px; font-size: 16px; }
+    .settings { right: 12px; left: 12px; width: auto; }
+    .ui-top { padding: 14px 16px; }
+    .ui-bottom { padding: 20px 16px 24px; }
+    .ctrl { width: 40px; height: 40px; }
+    .ctrl-primary { width: 48px; height: 48px; }
+    .hint { bottom: 96px; }
+  }
+
+  /* Someone who asked for less motion gets straight cuts and no drift. */
+  @media (prefers-reduced-motion: reduce) {
+    .deck .layer { transition: none !important; animation: none !important; }
+    .deck.is-kenburns .layer.is-active .layer-img { animation: none !important; }
+  }
+</style>

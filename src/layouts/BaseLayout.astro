@@ -3,9 +3,10 @@ export interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description, ogImage = 'https://lincolneast1996.com/images/474779326_952042330359989_8718990319472695709_n.jpg' } = Astro.props;
+const { title, description, ogImage = 'https://lincolneast1996.com/images/474779326_952042330359989_8718990319472695709_n.jpg', noindex = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@ const { title, description, ogImage = 'https://lincolneast1996.com/images/474779
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

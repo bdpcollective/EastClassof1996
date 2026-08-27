@@ -1,5 +1,14 @@
 ---
 // Memories component - modernized
+import { photos } from '../data/photos.js';
+
+const FEATURED_COUNT = 4;
+
+// Build-time pick so the grid is never empty (no-JS, or before the
+// inline script runs). The script below re-randomizes on every page load.
+const fallback = [...photos]
+  .sort(() => Math.random() - 0.5)
+  .slice(0, FEATURED_COUNT);
 ---
 
 <section class="memories">
@@ -7,24 +16,43 @@
       <h2 class="section-title">MEMORIES</h2>
       <div class="title-accent"></div>
     </div>
-    <div class="memories-grid animate-on-scroll stagger">
-      <div class="memory-item">
-        <img src="/images/thumbs/465127603_9055608791116063_4710872640504337783_n.webp" alt="Class of 1996 Memory" width="700" height="700" decoding="async" loading="lazy" />
-      </div>
-      <div class="memory-item">
-        <img src="/images/thumbs/465438560_9055608814449394_1075421722554769452_n.webp" alt="Class of 1996 Memory" width="700" height="700" decoding="async" loading="lazy" />
-      </div>
-      <div class="memory-item">
-        <img src="/images/thumbs/465543029_9055609131116029_3663602968941105562_n.webp" alt="Class of 1996 Memory" width="700" height="700" decoding="async" loading="lazy" />
-      </div>
-      <div class="memory-item">
-        <img src="/images/thumbs/465264510_9055608807782728_6239206708037678016_n.webp" alt="Class of 1996 Memory" width="700" height="700" decoding="async" loading="lazy" />
-      </div>
+    <div class="memories-grid animate-on-scroll stagger" id="memories-grid">
+      {/* Build-time picks; re-randomized on every page load by the script below */}
+      {fallback.map((photo) => (
+        <div class="memory-item">
+          <img
+            src={`/images/thumbs/${photo.name}.webp`}
+            alt={`Class of 1996 Memory - ${photo.label}`}
+            width="700"
+            height="700"
+            decoding="async"
+            loading="lazy"
+          />
+        </div>
+      ))}
     </div>
     <div class="more-button-container">
       <a href="/memories" class="more-memories-button">MORE MEMORIES</a>
     </div>
 </section>
+
+<script define:vars={{ photos }}>
+  (function() {
+    const grid = document.getElementById('memories-grid');
+    if (!grid) return;
+    const items = grid.querySelectorAll('.memory-item img');
+    const pool = [...photos];
+    const count = Math.min(items.length, pool.length);
+
+    // Partial Fisher-Yates: unbiased, and only shuffles as far as we need.
+    for (let i = 0; i < count; i++) {
+      const j = i + Math.floor(Math.random() * (pool.length - i));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+      items[i].src = `/images/thumbs/${pool[i].name}.webp`;
+      items[i].alt = `Class of 1996 Memory - ${pool[i].label}`;
+    }
+  })();
+</script>
 
 <style>
   .memories {

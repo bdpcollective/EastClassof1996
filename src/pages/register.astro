@@ -69,14 +69,22 @@ import Footer from '../components/Footer.astro';
                   <input type="checkbox" id="schoolTour" name="events" value="School Tour">
                   <label for="schoolTour">
                     <span class="checkbox-custom"></span>
-                    School Tour (Friday, Sept 4, 6:00 PM) - Free
+                    <span class="event-label-text">
+                      School Tour | Lincoln East High School<br>
+                      Friday, Sept 4, 6:00 PM &middot; Free
+                     
+                    </span>
                   </label>
                 </div>
                 <div class="checkbox-group">
                   <input type="checkbox" id="socialEvent" name="events" value="Social Event">
                   <label for="socialEvent">
                     <span class="checkbox-custom"></span>
-                    Sunday Social | North Apothecary Loft (Sunday, Sept 6, 7:00 PM) - $35/person or $60/couple. Food (Amigos, Valentino's, Runza), plus alcoholic and non-alcoholic drinks provided.
+                    <span class="event-label-text">
+                      Sunday Social | North Apothecary Loft<br>
+                      Sunday, Sept 6, 7:00 PM<br>
+                      Food (Amigos, Valentino's, Runza), plus alcoholic and non-alcoholic drinks provided.
+                    </span>
                   </label>
                 </div>
               </div>
@@ -84,24 +92,31 @@ import Footer from '../components/Footer.astro';
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
                 Sunday Social payment goes to the class Venmo: <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer">@LincolnEast1996</a>
               </p>
+              <p class="venmo-price">$35 per person &middot; $60 per couple</p>
             </div>
 
             <div class="form-section">
               <h2>Guest Information</h2>
-              <div class="form-group">
-                <label for="guestCount">Number of guests for the Sunday Social</label>
-                <select id="guestCount" name="guestCount">
-                  <option value="0">Just me</option>
-                  <option value="1">Me and a guest</option>
-                  <option value="2">Me and two guests</option>
-                  <option value="3">Me and three guests</option>
-                  <option value="4">Me and four guests</option>
-                </select>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" id="justMe" name="guestCount" value="0" checked>
+                  <label for="justMe">
+                    <span class="radio-custom"></span>
+                    Just me
+                  </label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="plusGuest" name="guestCount" value="1">
+                  <label for="plusGuest">
+                    <span class="radio-custom"></span>
+                    Me and a guest
+                  </label>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label for="guestNames">Guest Names</label>
-                <textarea id="guestNames" name="guestNames" placeholder="Please list the names of your guests..."></textarea>
+              <div class="form-group guest-name-field" id="guestNameGroup" style="display: none;">
+                <label for="guestName">Guest Name</label>
+                <input type="text" id="guestName" name="guestName" placeholder="Enter your guest's name">
               </div>
             </div>
 
@@ -123,7 +138,7 @@ import Footer from '../components/Footer.astro';
               <div class="school-photo">
                 <img src="/images/lincoln-east-high-school-lincoln-ne-3-schoolphoto.avif" alt="Lincoln East High School" loading="lazy">
               </div>
-              <p class="venmo-note">After submitting the form below, please complete your payment to the class Venmo, <strong>@LincolnEast1996</strong>. Early bird pricing: <strong>$35 per person</strong> or <strong>$60 per couple</strong>.</p>
+              <p class="venmo-note">After submitting the form below, please complete your payment to the class Venmo, <strong>@LincolnEast1996</strong>. Pricing is <strong>$35 per person</strong> or <strong>$60 per couple</strong>.</p>
               <p class="venmo-note"><strong>Important:</strong> Include your first and last name in the Venmo memo so we can match your payment to your registration.</p>
               <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
@@ -145,6 +160,7 @@ import Footer from '../components/Footer.astro';
               <div class="success-icon">&#10003;</div>
               <h2>Registration Submitted!</h2>
               <p>Thank you for registering for our 30th reunion. Don't forget to complete your payment via Venmo!</p>
+              <p class="venmo-price">$35 per person &middot; $60 per couple</p>
               <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
                 Pay with Venmo
@@ -174,6 +190,17 @@ import Footer from '../components/Footer.astro';
       const form = document.getElementById('registerForm');
       const submitBtn = form.querySelector('.submit-btn');
       const successMessage = document.getElementById('successMessage');
+      const guestNameGroup = document.getElementById('guestNameGroup');
+      const radioButtons = form.querySelectorAll('input[name="guestCount"]');
+
+      radioButtons.forEach(radio => {
+        radio.addEventListener('change', () => {
+          guestNameGroup.style.display = radio.value === '1' ? 'block' : 'none';
+          if (radio.value === '0') {
+            document.getElementById('guestName').value = '';
+          }
+        });
+      });
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -191,7 +218,8 @@ import Footer from '../components/Footer.astro';
           maidenName: formData.get('maidenName'),
           events: events.join(', '),
           guestCount: formData.get('guestCount'),
-          guestNames: formData.get('guestNames'),
+          guestName: formData.get('guestName'),
+          guestNames: formData.get('guestName'),
           dietaryRestrictions: formData.get('dietaryRestrictions'),
           comments: formData.get('comments'),
           source: 'register',
@@ -231,6 +259,19 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <style>
+
+  .success-content .venmo-price {
+    margin-bottom: 8px;
+  }
+
+  .venmo-price {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-700, #374151);
+    margin: 4px 0 0 0;
+  }
+
 
   .venmo-pay {
     display: flex;
@@ -432,6 +473,10 @@ import Footer from '../components/Footer.astro';
     border-color: var(--color-electric);
   }
 
+  .event-label-text {
+    line-height: 1.6;
+  }
+
   .checkbox-custom {
     width: 20px;
     height: 20px;
@@ -457,6 +502,83 @@ import Footer from '../components/Footer.astro';
     color: white;
     font-size: 12px;
     font-weight: bold;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .radio-option {
+    position: relative;
+    flex: 1;
+  }
+
+  .radio-option input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .radio-option input[type="radio"]:focus-visible + label {
+    outline: 3px solid var(--color-electric);
+    outline-offset: 2px;
+  }
+
+  .radio-option label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-gray-700);
+    padding: 15px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 10px;
+    transition: all var(--transition-fast);
+  }
+
+  .radio-option input[type="radio"]:checked + label {
+    background: rgba(6, 182, 212, 0.05);
+    border-color: var(--color-electric);
+  }
+
+  .radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .radio-option input[type="radio"]:checked + label .radio-custom {
+    border-color: var(--color-electric);
+  }
+
+  .radio-option input[type="radio"]:checked + label .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: var(--color-electric);
+    border-radius: 50%;
+  }
+
+  .guest-name-field {
+    margin-top: 0;
   }
 
   /* Venmo Section */

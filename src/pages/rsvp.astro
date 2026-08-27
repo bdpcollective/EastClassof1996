@@ -69,7 +69,11 @@ import Footer from '../components/Footer.astro';
                   <input type="checkbox" id="schoolTour" name="events" value="School Tour">
                   <label for="schoolTour">
                     <span class="checkbox-custom"></span>
-                    School Tour (Friday, Sept 4, 6:00 PM)
+                    <span class="event-label-text">
+                      School Tour | Lincoln East High School<br>
+                      Friday, Sept 4, 6:00 PM &middot; Free
+                     
+                    </span>
                   </label>
                 </div>
                 <div class="checkbox-group">
@@ -79,7 +83,6 @@ import Footer from '../components/Footer.astro';
                     <span class="event-label-text">
                       Sunday Social | North Apothecary Loft<br>
                       Sunday, Sept 6, 7:00 PM<br>
-                      $35/person or $60/couple<br>
                       Food (Amigos, Valentino's, Runza), plus alcoholic and non-alcoholic drinks provided.
                     </span>
                   </label>
@@ -89,6 +92,7 @@ import Footer from '../components/Footer.astro';
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
                 Sunday Social payment goes to the class Venmo: <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer">@LincolnEast1996</a>
               </p>
+              <p class="venmo-price">$35 per person &middot; $60 per couple</p>
             </div>
 
             <div class="form-section">
@@ -142,7 +146,7 @@ import Footer from '../components/Footer.astro';
             <div class="success-content">
               <div class="success-icon">&#10003;</div>
               <h2>RSVP Submitted Successfully!</h2>
-              <p>Thank you for registering for our 30th reunion. We can't wait to see you in Lincoln!</p>
+              <p>Thank you for registering for our 30th reunion. Don't forget to complete your Sunday Social payment via Venmo to <strong>@LincolnEast1996</strong> &mdash; we can't wait to see you in Lincoln!</p>
             </div>
           </div>
         </div>
@@ -197,8 +201,10 @@ import Footer from '../components/Footer.astro';
           events: events.join(', '),
           guestCount: formData.get('guestCount'),
           guestName: formData.get('guestName'),
+          guestNames: formData.get('guestName'),
           dietaryRestrictions: formData.get('dietaryRestrictions'),
           comments: formData.get('comments'),
+          source: 'rsvp',
           timestamp: new Date().toLocaleString()
         };
 
@@ -235,6 +241,15 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <style>
+
+  .venmo-price {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-700, #374151);
+    margin: 4px 0 0 0;
+  }
+
 
   .venmo-pay {
     display: flex;

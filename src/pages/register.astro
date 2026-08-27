@@ -80,6 +80,10 @@ import Footer from '../components/Footer.astro';
                   </label>
                 </div>
               </div>
+              <p class="venmo-pay">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
+                Sunday Social payment goes to the class Venmo: <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer">@LincolnEast1996</a>
+              </p>
             </div>
 
             <div class="form-section">
@@ -119,7 +123,7 @@ import Footer from '../components/Footer.astro';
               <div class="school-photo">
                 <img src="/images/lincoln-east-high-school-lincoln-ne-3-schoolphoto.avif" alt="Lincoln East High School" loading="lazy">
               </div>
-              <p class="venmo-note">After submitting the form below, please complete your payment via Venmo. Early bird pricing: <strong>$35 per person</strong> or <strong>$60 per couple</strong>.</p>
+              <p class="venmo-note">After submitting the form below, please complete your payment to the class Venmo, <strong>@LincolnEast1996</strong>. Early bird pricing: <strong>$35 per person</strong> or <strong>$60 per couple</strong>.</p>
               <p class="venmo-note"><strong>Important:</strong> Include your first and last name in the Venmo memo so we can match your payment to your registration.</p>
               <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
@@ -227,6 +231,28 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <style>
+
+  .venmo-pay {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: #008CFF;
+    margin: 12px 0 0 0;
+  }
+
+  .venmo-pay a {
+    color: #008CFF;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 140, 255, 0.4);
+  }
+
+  .venmo-pay a:hover {
+    border-bottom-color: #008CFF;
+  }
+
   .rsvp-page {
     padding: var(--section-padding) 0;
     background: var(--gradient-primary);

@@ -73,9 +73,23 @@ import Footer from '../components/Footer.astro';
     function rowToAttendee(row) {
       const firstName = (row[1] || '').toString().trim();
       const lastName = (row[2] || '').toString().trim();
+      const email = (row[3] || '').toString().trim().toLowerCase();
       if (!firstName) return null;
       const lastInitial = lastName ? lastName.charAt(0).toUpperCase() + '.' : '';
-      return { name: firstName + ' ' + lastInitial, timestamp: row[0] };
+      // Use email as dedup key, fall back to full name
+      const key = email || (firstName + ' ' + lastName).toLowerCase();
+      return { name: firstName + ' ' + lastInitial, timestamp: row[0], key };
+    }
+
+    function deduplicateAttendees(attendees) {
+      const seen = new Map();
+      for (const attendee of attendees) {
+        const existing = seen.get(attendee.key);
+        if (!existing || new Date(attendee.timestamp) > new Date(existing.timestamp)) {
+          seen.set(attendee.key, attendee);
+        }
+      }
+      return Array.from(seen.values());
     }
 
     function parseAttendees(data) {
@@ -123,7 +137,7 @@ import Footer from '../components/Footer.astro';
         const data = await response.json();
         loadingState.hidden = true;
 
-        const attendees = parseAttendees(data);
+        const attendees = deduplicateAttendees(parseAttendees(data));
 
         if (attendees.length === 0) {
           emptyState.hidden = false;

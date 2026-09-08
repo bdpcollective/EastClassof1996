@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Banner from '../components/Banner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Sponsors | Lincoln East High School Class of 1996"
+  description="Thank you to the sponsors who made the Lincoln East High School Class of 1996 30th Reunion possible."
+>
+  <Header />
+  <Banner />
+
+  <main id="main-content">
+    <section class="sponsors-page ambient-bg">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">OUR SPONSORS</h2>
+          <div class="title-accent"></div>
+        </div>
+        <p class="thank-you">Thank you to our generous sponsors for making the 30th reunion possible.</p>
+        <div class="sponsor-image-wrapper">
+          <img src="/images/soulshine.jpeg" alt="Soulshine — reunion sponsor" class="sponsor-image" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .sponsors-page {
+    padding: var(--section-padding) 0;
+    background: var(--gradient-primary);
+    min-height: 80vh;
+  }
+
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .title-accent {
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-card-border);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  .thank-you {
+    font-family: var(--font-body);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin: 0 0 48px 0;
+    line-height: 1.6;
+  }
+
+  .sponsor-image-wrapper {
+    text-align: center;
+  }
+
+  .sponsor-image {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .sponsors-page { padding: var(--section-padding-mobile) 0; }
+    .section-title { font-size: 36px; }
+    .thank-you { font-size: 18px; }
+  }
+
+  @media (max-width: 480px) {
+    .sponsors-page { padding: 40px 0; }
+    .section-title { font-size: 28px; margin: 0 0 12px 0; }
+    .thank-you { font-size: 16px; }
+  }
+</style>

@@ -6,8 +6,8 @@ import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout
-  title="Register | Lincoln East High School Class of 1996"
-  description="Register and pay for the Lincoln East High School Class of 1996 30th Reunion. Secure your spot for this memorable celebration!"
+  title="Keep In Touch | Lincoln East High School Class of 1996"
+  description="Stay connected with the Lincoln East High School Class of 1996. Sign up to keep in touch and hear about future gatherings."
 >
   <Header />
   <Banner />
@@ -16,8 +16,8 @@ import Footer from '../components/Footer.astro';
     <section class="rsvp-page ambient-bg">
       <div class="container">
         <div class="rsvp-header animate-on-scroll">
-          <h1>Register &amp; Pay</h1>
-          <p class="rsvp-subtitle">Sign up for the reunion and complete your payment via Venmo</p>
+          <h1>Keep In Touch</h1>
+          <p class="rsvp-subtitle">Stay connected and be the first to hear about future gatherings</p>
           <div class="event-details">
             <div class="detail-item">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -134,22 +134,9 @@ import Footer from '../components/Footer.astro';
               </div>
             </div>
 
-            <div class="form-section venmo-section">
-              <h2>Payment</h2>
-              <div class="school-photo">
-                <img src="/images/lincoln-east-high-school-lincoln-ne-3-schoolphoto.avif" alt="Lincoln East High School" loading="lazy">
-              </div>
-              <p class="venmo-note">After submitting the form below, please complete your payment to the class Venmo, <strong>@LincolnEast1996</strong>. Pricing is <strong>$35 per person</strong> or <strong>$60 per couple</strong>.</p>
-              <p class="venmo-note"><strong>Important:</strong> Include your first and last name in the Venmo memo so we can match your payment to your registration.</p>
-              <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
-                Pay with Venmo
-              </a>
-            </div>
-
             <div class="form-actions">
               <button type="submit" class="submit-btn">
-                <span class="btn-text">Submit Registration</span>
+                <span class="btn-text">Keep Me Updated</span>
                 <span class="btn-loading">Submitting...</span>
               </button>
             </div>
@@ -159,13 +146,8 @@ import Footer from '../components/Footer.astro';
           <div id="successMessage" class="success-message" role="alert" aria-live="assertive">
             <div class="success-content">
               <div class="success-icon">&#10003;</div>
-              <h2>Registration Submitted!</h2>
-              <p>Thank you for registering for our 30th reunion. Don't forget to complete your payment via Venmo!</p>
-              <p class="venmo-price">$35 per person &middot; $60 per couple</p>
-              <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer" class="venmo-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
-                Pay with Venmo
-              </a>
+              <h2>You're on the list!</h2>
+              <p>Thanks for staying connected. We'll keep you updated on future Class of '96 gatherings. See you in 10 years!</p>
             </div>
           </div>
         </div>
@@ -233,8 +215,8 @@ import Footer from '../components/Footer.astro';
           successMessage.classList.add('active');
           createConfetti();
         } catch (error) {
-          console.error('Error submitting registration:', error);
-          alert('There was an error submitting your registration. Please try again.');
+          console.error('Error submitting form:', error);
+          alert('There was an error submitting your information. Please try again.');
         } finally {
           submitBtn.classList.remove('loading');
         }

@@ -63,74 +63,10 @@ import Footer from '../components/Footer.astro';
             </div>
 
             <div class="form-section">
-              <h2>Event Attendance</h2>
-              <div class="event-checkboxes">
-                <div class="checkbox-group">
-                  <input type="checkbox" id="schoolTour" name="events" value="School Tour">
-                  <label for="schoolTour">
-                    <span class="checkbox-custom"></span>
-                    <span class="event-label-text">
-                      School Tour | Lincoln East High School<br>
-                      Friday, Sept 4, 6:00 PM &middot; Free<br>
-                      Meet at 6P Door 1 by the flag pole
-                     
-                    </span>
-                  </label>
-                </div>
-                <div class="checkbox-group">
-                  <input type="checkbox" id="socialEvent" name="events" value="Social Event">
-                  <label for="socialEvent">
-                    <span class="checkbox-custom"></span>
-                    <span class="event-label-text">
-                      Sunday Social | North Apothecary Loft<br>
-                      Sunday, Sept 6, 7:00 PM<br>
-                      Food (Amigos, Valentino's, Runza), plus alcoholic and non-alcoholic drinks provided.
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <p class="venmo-pay">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.82 1c.96 1.58 1.39 3.21 1.39 5.25 0 6.53-5.57 15.01-10.09 20.96H3.54L.5 2.94l7.09-.64 1.75 14.07C11.38 13.12 14 7.42 14 4.09c0-1.96-.34-3.3-.88-4.34L19.82 1z"/></svg>
-                Sunday Social payment goes to the class Venmo: <a href="https://venmo.com/LincolnEast1996" target="_blank" rel="noopener noreferrer">@LincolnEast1996</a>
-              </p>
-              <p class="venmo-price">$35 per person &middot; $60 per couple</p>
-            </div>
-
-            <div class="form-section">
-              <h2>Guest Information</h2>
-              <div class="radio-group">
-                <div class="radio-option">
-                  <input type="radio" id="justMe" name="guestCount" value="0" checked>
-                  <label for="justMe">
-                    <span class="radio-custom"></span>
-                    Just me
-                  </label>
-                </div>
-                <div class="radio-option">
-                  <input type="radio" id="plusGuest" name="guestCount" value="1">
-                  <label for="plusGuest">
-                    <span class="radio-custom"></span>
-                    Me and a guest
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group guest-name-field" id="guestNameGroup" style="display: none;">
-                <label for="guestName">Guest Name</label>
-                <input type="text" id="guestName" name="guestName" placeholder="Enter your guest's name">
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h2>Additional Information</h2>
+              <h2>Comments or Messages</h2>
               <div class="form-group">
-                <label for="dietaryRestrictions">Dietary Restrictions or Special Needs</label>
-                <textarea id="dietaryRestrictions" name="dietaryRestrictions" placeholder="Any allergies, dietary restrictions, or accessibility needs..."></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="comments">Comments or Messages</label>
-                <textarea id="comments" name="comments" placeholder="Share any memories, excitement, or special requests..."></textarea>
+                <label for="comments">Share any memories, excitement, or thoughts...</label>
+                <textarea id="comments" name="comments" placeholder="Share any memories, excitement, or thoughts..."></textarea>
               </div>
             </div>
 
@@ -173,25 +109,12 @@ import Footer from '../components/Footer.astro';
       const form = document.getElementById('registerForm');
       const submitBtn = form.querySelector('.submit-btn');
       const successMessage = document.getElementById('successMessage');
-      const guestNameGroup = document.getElementById('guestNameGroup');
-      const radioButtons = form.querySelectorAll('input[name="guestCount"]');
-
-      radioButtons.forEach(radio => {
-        radio.addEventListener('change', () => {
-          guestNameGroup.style.display = radio.value === '1' ? 'block' : 'none';
-          if (radio.value === '0') {
-            document.getElementById('guestName').value = '';
-          }
-        });
-      });
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         submitBtn.classList.add('loading');
 
         const formData = new FormData(form);
-        const events = [];
-        formData.getAll('events').forEach(event => events.push(event));
 
         const data = {
           firstName: formData.get('firstName'),
@@ -199,13 +122,8 @@ import Footer from '../components/Footer.astro';
           email: formData.get('email'),
           phone: formData.get('phone'),
           maidenName: formData.get('maidenName'),
-          events: events.join(', '),
-          guestCount: formData.get('guestCount'),
-          guestName: formData.get('guestName'),
-          guestNames: formData.get('guestName'),
-          dietaryRestrictions: formData.get('dietaryRestrictions'),
           comments: formData.get('comments'),
-          source: 'register',
+          source: 'updates',
           timestamp: new Date().toLocaleString()
         };
 
@@ -242,40 +160,6 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <style>
-
-  .success-content .venmo-price {
-    margin-bottom: 8px;
-  }
-
-  .venmo-price {
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-gray-700, #374151);
-    margin: 4px 0 0 0;
-  }
-
-
-  .venmo-pay {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: #008CFF;
-    margin: 12px 0 0 0;
-  }
-
-  .venmo-pay a {
-    color: #008CFF;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(0, 140, 255, 0.4);
-  }
-
-  .venmo-pay a:hover {
-    border-bottom-color: #008CFF;
-  }
 
   .rsvp-page {
     padding: var(--section-padding) 0;
@@ -411,210 +295,6 @@ import Footer from '../components/Footer.astro';
     min-height: 100px;
   }
 
-  .event-checkboxes {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .checkbox-group {
-    position: relative;
-  }
-
-  .checkbox-group input[type="checkbox"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .checkbox-group input[type="checkbox"]:focus-visible + label {
-    outline: 3px solid var(--color-electric);
-    outline-offset: 2px;
-  }
-
-  .checkbox-group label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--color-gray-700);
-    padding: 15px;
-    border: 2px solid var(--color-gray-300);
-    border-radius: 10px;
-    transition: all var(--transition-fast);
-  }
-
-  .checkbox-group input[type="checkbox"]:checked + label {
-    background: rgba(6, 182, 212, 0.05);
-    border-color: var(--color-electric);
-  }
-
-  .event-label-text {
-    line-height: 1.6;
-  }
-
-  .checkbox-custom {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-gray-300);
-    border-radius: 4px;
-    margin-right: 12px;
-    position: relative;
-    transition: all var(--transition-fast);
-    flex-shrink: 0;
-  }
-
-  .checkbox-group input[type="checkbox"]:checked + label .checkbox-custom {
-    background: var(--color-electric);
-    border-color: var(--color-electric);
-  }
-
-  .checkbox-group input[type="checkbox"]:checked + label .checkbox-custom::after {
-    content: '\2713';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-  }
-
-  .radio-group {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-
-  .radio-option {
-    position: relative;
-    flex: 1;
-  }
-
-  .radio-option input[type="radio"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .radio-option input[type="radio"]:focus-visible + label {
-    outline: 3px solid var(--color-electric);
-    outline-offset: 2px;
-  }
-
-  .radio-option label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--color-gray-700);
-    padding: 15px;
-    border: 2px solid var(--color-gray-300);
-    border-radius: 10px;
-    transition: all var(--transition-fast);
-  }
-
-  .radio-option input[type="radio"]:checked + label {
-    background: rgba(6, 182, 212, 0.05);
-    border-color: var(--color-electric);
-  }
-
-  .radio-custom {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-gray-300);
-    border-radius: 50%;
-    margin-right: 12px;
-    position: relative;
-    transition: all var(--transition-fast);
-    flex-shrink: 0;
-  }
-
-  .radio-option input[type="radio"]:checked + label .radio-custom {
-    border-color: var(--color-electric);
-  }
-
-  .radio-option input[type="radio"]:checked + label .radio-custom::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background: var(--color-electric);
-    border-radius: 50%;
-  }
-
-  .guest-name-field {
-    margin-top: 0;
-  }
-
-  /* Venmo Section */
-  .venmo-section {
-    text-align: center;
-  }
-
-  .school-photo {
-    margin-bottom: 24px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  .school-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .venmo-note {
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--color-gray-600);
-    margin: 0 0 16px 0;
-    line-height: 1.6;
-  }
-
-  .venmo-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #008CFF;
-    color: white;
-    padding: 14px 32px;
-    border-radius: 12px;
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all var(--transition-medium);
-    box-shadow: 0 4px 15px rgba(0, 140, 255, 0.3);
-    margin-top: 8px;
-  }
-
-  .venmo-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 140, 255, 0.4);
-    background: #0074D4;
-  }
-
   .form-actions {
     text-align: center;
     margin-top: 40px;
@@ -719,10 +399,6 @@ import Footer from '../components/Footer.astro';
     margin: 0 0 30px 0;
   }
 
-  .success-content .venmo-btn {
-    margin-top: 0;
-  }
-
   /* Confetti */
   :global(.confetti) {
     position: fixed;
@@ -745,7 +421,6 @@ import Footer from '../components/Footer.astro';
     .rsvp-form { padding: 30px 20px; }
     .form-row { flex-direction: column; gap: 0; }
     .submit-btn { width: 100%; }
-    .venmo-btn { width: 100%; justify-content: center; }
   }
 
   @media (max-width: 480px) {

@@ -21,7 +21,12 @@ import Footer from '../components/Footer.astro';
         </div>
         <p class="thank-you">Thank you to our generous sponsors for making the 30th reunion possible.</p>
         <div class="sponsor-image-wrapper">
-          <img src="/images/soulshine.jpeg" alt="Soulshine — reunion sponsor" class="sponsor-image" />
+          <a href="https://www.soulshine1111.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
+            <img src="/images/soulshine.jpeg" alt="Soulshine — reunion sponsor" class="sponsor-image" />
+            <span class="visit-label">Visit Website
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -82,11 +87,54 @@ import Footer from '../components/Footer.astro';
     text-align: center;
   }
 
+  .sponsor-link {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    border-radius: 16px;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    cursor: pointer;
+  }
+
+  .sponsor-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .sponsor-link:hover .sponsor-image {
+    box-shadow: 0 0 0 3px var(--color-electric-light);
+  }
+
+  .sponsor-link:focus-visible {
+    outline: 3px solid var(--color-electric-light);
+    outline-offset: 4px;
+    border-radius: 16px;
+  }
+
   .sponsor-image {
     max-width: 600px;
     width: 100%;
     border-radius: 16px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transition: box-shadow var(--transition-medium);
+  }
+
+  .visit-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-electric-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color var(--transition-fast);
+  }
+
+  .sponsor-link:hover .visit-label {
+    color: white;
   }
 
   @media (max-width: 768px) {
